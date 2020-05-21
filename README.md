@@ -14,8 +14,11 @@
 |day|integer|null: false|
 ### Association
 - has_many :buyers
+- has_many :items, though: [:comments, :likes]
 - has_many :comments
 - has_many :likes
+- has_many :sell_items, class_name: 'Item', foreign_key: 'seller_id'
+- has_many :buy_items, class_name: 'Item', foreign_key: 'buyer_id'
 - has_one :user_address
 - has_one :credit_card
 
@@ -62,7 +65,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|product_id|references|foreign_kry: true|
+|product_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -73,7 +76,7 @@
 |------|----|-------|
 |text|text||
 |user_id|references|foreign_key: true|
-|product_id|references|foreign_kry: true|
+|product_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
 - belomngs_to :item
@@ -83,7 +86,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|product_id|references|foreign_kry: true|
+|product_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
 - belomngs_to :item
@@ -93,7 +96,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|comment|text|null: false|
+|text|text|null: false|
 |category_id|references|foreign_key: true|
 |brand_id|references|foreign_key: true|
 |damage_id|references|foreign_key: true|
@@ -102,8 +105,10 @@
 |send_date_id|references|foreign_key: true|
 |price|integer|null: false|
 |buyer_id|references|foreign_key: true|
+|seller_id|references|foreign_key: true|
 ### Association
 - has_many :buyers
+- has_many :users, though: [:comments, :likes]
 - has_many :comments
 - has_many :likes
 - has_many :images
@@ -113,13 +118,15 @@
 - belongs_to :damage
 - belongs_to :fee
 - belongs_to :send_date
+- belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+- belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |product_id|references|foreign_key: true|
-|image_url|references|foreign_key: true|
+|image_url|string|null :false|
 ### Association
 - belongs_to :item
 
@@ -130,7 +137,7 @@
 |name|string|null: false|
 ### Association
 - has_many :items
-- has_many :categorys, through: :category_brands
+- has_many :categories, through: :category_brands
 - has_many :category_brands
 
 
