@@ -61,16 +61,6 @@
 - has_many :items
 
 
-## buyersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|foreign_key: true|
-|product_id|references|foreign_key: true|
-### Association
-- belongs_to :user
-- belongs_to :item
-
-
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
