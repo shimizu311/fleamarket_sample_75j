@@ -13,7 +13,6 @@
 |month|integer|null: false|
 |day|integer|null: false|
 ### Association
-- has_many :items, though: [:comments, :likes]
 - has_many :comments
 - has_many :likes
 - has_many :sell_items, class_name: 'Item', foreign_key: 'seller_id'
@@ -42,8 +41,8 @@
 |postal_code|integer|null: false|
 |area_id|references|foreign_key: true|
 |city|string|null: false|
-|address1|string|null: false|
-|address2|string||
+|house_number|string|null: false|
+|building_name|string||
 |tel|integer||
 ### Association
 - belongs_to :user
@@ -113,7 +112,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|references|foreign_key: true|
+|product_id|references|foreign_key: true, null :false|
 |image_url|string|null :false|
 ### Association
 - belongs_to :item
