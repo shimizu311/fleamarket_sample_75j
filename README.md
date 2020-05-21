@@ -13,12 +13,12 @@
 |month|integer|null: false|
 |day|integer|null: false|
 ### Association
-- has_many :comments
-- has_many :likes
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 - has_many :sell_items, class_name: 'Item', foreign_key: 'seller_id'
 - has_many :buy_items, class_name: 'Item', foreign_key: 'buyer_id'
-- has_one :user_address
-- has_one :credit_card
+- has_one :user_address, dependent: :destroy
+- has_one :credit_card, dependent: :destroy
 
 
 ## credit_cardsテーブル
@@ -96,9 +96,9 @@
 |seller_id|references|foreign_key: true|
 ### Association
 - has_many :users, though: [:comments, :likes]
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - has_many :likes
-- has_many :images
+- has_many :images, dependent: :destroy
 - belongs_to :area
 - belongs_to :brand
 - belongs_to :category
@@ -131,6 +131,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|string|null :false|
 ### Association
 - has_many :items
 - has_many :brands
