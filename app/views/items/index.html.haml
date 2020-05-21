@@ -1,0 +1,134 @@
+%body
+  %header.header
+    .header__main
+      .header__main__top
+        %h1.header__main__top--title
+          = link_to image_tag("logo/logo.png"), "#"
+        .search-box
+          %form
+            %input.search-box__text{:placeholder => "キーワードから探す", :type => "text"}/
+            %input{:type => "submit"}/
+      .nav
+        %ul.nav__left
+          %li
+            %a{:href => "#"} 商品一覧
+        %ul.nav__right
+          %li
+            %a.nav__btn{:href => "#"} ログイン
+          %li
+            %a{:href => "#"} 新規会員登録
+  %section.top-img
+    .top-img__messages
+      .top-img__messages--title
+      %p.top-img__messages--text
+      .top-img__messages--btn
+        %a{:href => "#"}
+        %a{:href => "#"}
+  %section.contents
+    .content__title
+    %ul
+      %li
+        %div
+        %span
+        %img{:src => ""}/
+        %div
+        %p
+      %li
+        %div
+        %span
+        %img{:src => ""}/
+        %div
+        %p
+      %li
+        %div
+        %span
+        %img{:src => ""}/
+        %div
+        %p
+  %section.sec-img
+    .sec-img__messages
+      .sec-img__messages--title
+      %p.sec-img__messages--text
+      .sec-img__messages--btn
+        %a{:href => "#"}
+        %a{:href => "#"}
+  %section.feature
+    .feature__title
+    .feature__contents
+      .feature__contents__box
+        .feature__contents__box--img
+          %img{:src => ""}/
+          %div
+          %p
+      %section.products
+        .products-title
+        .products-box
+          .products-box__sub-title
+          .products-box__lists
+            .product-list
+              %a{:href => "#"}
+              .product-list__img
+                %img{:src => ""}/
+                .product-list__text
+                  %ul
+                    %li
+                    %li
+                  %p
+          %section.products
+            .products-title
+            .products-box
+              .products-box__sub-title
+              .products-box__lists
+                .product-list
+                  %a{:href => "#"}
+                  .product-list__img
+                    %img{:src => ""}/
+                    .product-list__text
+                      %ul
+                        %li
+                        %li
+                      %p
+              .display-btn
+                %a{:href => "#"}
+                  %span.display-btn__text
+                  %img{:src => ""}/
+              %section.bottom-img
+                .bottom-img__messages
+                  .bottom-img__messages--title
+                  %p.bottom-img__messages--text
+                  .bottom-img__messages--btn
+                    %a{:href => "#"}
+                    %a{:href => "#"}
+              %footer.footer
+                %ul.footer-guide
+                  %li
+                    .guide-title
+                    %ul
+                      %li
+                        %a{:href => "#"}
+                      %li
+                        %a{:href => "#"}
+                      %li
+                        %a{:href => "#"}
+                      %li
+                        %a{:href => "#"}
+                  %li
+                    .guide-title
+                    %ul
+                      %li
+                        %a{:href => "#"}
+                      %li
+                        %a{:href => "#"}
+                  %li
+                    .guide-title
+                    %ul
+                      %li
+                        %a{:href => "#"}
+                      %li
+                        %a{:href => "#"}
+                      %li
+                        %a{:href => "#"}
+                .footer-logo
+                  %a{:href => "#"}
+                  %img{:src => ""}/
+                %p
