@@ -13,7 +13,6 @@
 |month|integer|null: false|
 |day|integer|null: false|
 ### Association
-- has_many :buyers
 - has_many :items, though: [:comments, :likes]
 - has_many :comments
 - has_many :likes
@@ -97,7 +96,6 @@
 |buyer_id|references|foreign_key: true|
 |seller_id|references|foreign_key: true|
 ### Association
-- has_many :buyers
 - has_many :users, though: [:comments, :likes]
 - has_many :comments
 - has_many :likes
@@ -127,8 +125,7 @@
 |name|string|null: false|
 ### Association
 - has_many :items
-- has_many :categories, through: :category_brands
-- has_many :category_brands
+- has_many :categories
 
 
 ## categoryテーブル
@@ -137,18 +134,7 @@
 |name|string|null: false|
 ### Association
 - has_many :items
-- has_many :brands, through: :category_brands
-- has_many :category_brands
-
-
-## category_Brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|brand_id|references|foreign_key: true|
-|category_id|references|foreign_key: true|
-### Association
-- belongs_to :category
-- belongs_to :brand
+- has_many :brands
 
 
 ## damagesテーブル
