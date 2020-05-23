@@ -1,0 +1,91 @@
+%header.header
+  .header__main
+    .header__main__top
+      %h1.header__main__top--title
+        = link_to image_tag("logo/logo.png"), "#"
+      .search-box
+        = form_for "/" do |f|
+          = f.text_field :name, class:"search-box__text", placeholder: "キーワードから探す"
+          = f.button image_tag("icon/icon-search 1.png")
+    .nav
+      %ul.nav__left
+        %li
+          = link_to "商品一覧", "#"
+      %ul.nav__right
+        %li
+          = link_to "ログイン", "#"
+        %li
+          = link_to "新規会員登録", "#"
+
+.main-page
+  .items
+    %h1.items__name samplesamplesamplesamplesamplesamplesamplesamplesample
+    .items__contents
+    
+    .items__price
+    = link_to "購入画面に進む", "#", class: "items__buy-btn"
+    .items__comment
+    .items__btn
+  .message-box
+    .message-box__main
+
+    .message-box__form
+
+
+
+
+
+
+
+
+
+
+
+
+
+%section.bottom-img
+  .bottom-img__messages
+    %h2.bottom-img__messages--title
+      = "だれでもかんたん、人生を変えるフリマアプリ"
+    %p.bottom-img__messages--text
+      = "今すぐ無料ダウンロード！"
+    .bottom-img__messages--btn
+      = link_to image_tag("app_store.svg"), "#"
+      = link_to image_tag("google_play.svg"), "#"
+%footer.footer
+  %ul.footer-guide
+    %li.footer-guide__info
+      %h2.guide-title
+        = "FURIMAについて"
+      %ul
+        %li
+          = link_to "会社概要（運営会社）", "#"
+        %li
+          = link_to "プライバシーポリシー", "#"
+        %li
+          = link_to "FURIMA利用規約", "#"
+        %li
+          = link_to "ポイントに関する特約", "#"
+    %li.footer-guide__info
+      %h2.guide-title
+        = "FURIMAを見る"
+      %ul
+        %li
+          = link_to "カテゴリー一覧", "#"
+        %li
+          = link_to "ブランド一覧", "#"
+    %li.footer-guide__info
+      %h2.guide-title
+        = "ヘルプ＆ガイド"
+      %ul
+        %li
+          = link_to "FURIMAガイド", "#"
+        %li
+          = link_to "FURIMAロゴ利用ガイドライン", "#"
+        %li
+          = link_to "お知らせ", "#"
+  .footer__logo
+    = link_to "", "#"
+    = link_to image_tag("logo/logo-white.png")
+  %p
+    = "© FURIMA"
