@@ -1,0 +1,19 @@
+.user_session
+  = render "devise/devise-header"
+  .main
+    .top
+      %h6 アカウントをお持ちでない方はこちら
+      .registration_link
+        = button_to '新規会員登録', new_user_registration_path, class: 'registration_link__btn'
+    .user_form
+      = form_with model: @user, url: new_user_session_path do |f|
+        .field
+          .field__lower
+            = f.email_field :email, class: 'field__lower__input', placeholder: 'メールアドレス'
+        .field
+          .field__lower
+            = f.password_field :password, class: 'field__lower__input', placeholder: 'パスワード'
+        .actions
+          = f.submit "ログイン", class: 'submit-btn'
+  = render "devise/devise-footer"
+
