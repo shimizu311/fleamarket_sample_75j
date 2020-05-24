@@ -1,0 +1,24 @@
+@mixin underline {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: $strong_color;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin relative_flex {
+  position: relative;
+  display: flex;
+}
+
+@mixin photo_size {
+  background-color:rgba(255,255,255,1.0);
+  background-size: cover;
+}
+
+@mixin underline {
+  border-bottom: 1px solid #e2dfdf;
+}

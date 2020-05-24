@@ -1,0 +1,98 @@
+= render 'layouts/header'
+.main-page
+  .items
+    %h1.items__name samplesamplesamplesamplesamplesamplesamplesamplesample
+    .items__contents
+      .items__contents--image
+        .image__main
+          = link_to image_tag("sample1.png")
+        %ul.image__lists
+          %li.image
+            = link_to image_tag("sample2.jpeg")
+          %li.image
+            = link_to image_tag("sample3.jpeg")
+          %li.image
+          %li.image
+          %li.image
+      .items__contents--info
+        %table.items__contents--info--box
+          %tr
+            %th 出品者
+            %td taichi
+          %tr
+            %th カテゴリー
+            %td インナー
+          %tr
+            %th ブランド
+            %td 
+          %tr
+            %th 商品の状態
+            %td 新品、未使用
+          %tr
+            %th 配送料の負担
+            %td 送料込み（出品者負担）
+          %tr
+            %th 配送の方法
+            %td 普通郵便(定形、定形外)
+          %tr
+            %th 配送元地域
+            %td 東京都
+          %tr
+            %th 発送日の目安
+            %td 1~2日で発送
+    
+    .items__price-box
+      %span.item-price ¥2,980
+      %span.item-tax (税込)
+      %span.item-fee 送料込み
+    = link_to "購入画面に進む", "#", class: "items__buy-btn"
+    .items__comment
+      %p.items__comment--main
+        = "testtesttesttesttest"
+        %br
+        = "testtesttest"
+        %br
+        %br
+        = "testtesttesttesttesttesttesttest"
+        %br
+        = "testtest"
+        %br
+        = "testtesttesttesttest"
+        %br
+        %br
+        = "testtesttesttesttesttesttesttesttesttesttest"
+    .items__btn
+      .items__btn--like
+        = "♡ いいね! 0"
+  .message-box
+    .message-box__main
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+    .message-box__form
+      = form_for "#" do |f|
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = f.text_area :name, class: "text_area__comment"
+        = f.submit "コメントする", class: "text_area__submit"
+= render 'layouts/footer'

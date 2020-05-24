@@ -1,0 +1,188 @@
+.main-page {
+  background-color: #EEEEEE;
+  padding: 20px 0 50px;
+  .items {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    margin-top: 40px;
+    padding: 24px 40px 40px;
+    &__name {
+      height: 100px;
+      font-size: 30px;
+      padding-bottom: 20px;
+      overflow-wrap: break-word;
+    }
+    &__contents {
+      height: 500px;
+      margin-bottom: 20px;
+      display: flex;
+      &--image {
+        height: 100%;
+        width: 300px;
+        background-color: #fafafa;
+        .image__main {
+          height: 300px;
+          width: 300px;
+          img {
+            cursor: default;
+          }
+        }
+        .image__lists {
+          display: flex;
+          .image {
+            height: 60px;
+            width: 60px;
+            list-style: none;
+            display: table-cell;
+            line-height: 60px;
+            text-align: center;
+            img {
+              cursor: default;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+      &--info {
+        height: 100%;
+        width: 350px;
+        padding-left: 20px;
+        &--box {
+          border: 1px solid #e2dfdf;
+          tr {
+            font-size: 14px;
+            @include underline;
+            th {
+              border-right: 1px solid #e2dfdf;
+              @include underline;
+              font-weight: normal;
+              width: 140px;
+              text-align: left;
+              padding: 15px 0 15px 5px;
+              background-color: #fafafa;
+            }
+            td {
+              @include underline;
+              width: 210px;
+              padding: 15px 0 15px 5px;
+            }
+          }
+        }
+      }
+    }
+    &__price-box {
+      text-align: center;
+      padding-top: 30px;
+      .item-price {
+        font-size: 48px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .item-tax {
+        font-size: 12px;
+      }
+      .item-fee {
+        font-size: 16px;
+      }
+    }
+    &__buy-btn {
+      margin-top: 10px;
+      display: block;
+      background-color: red;
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    &__comment {
+      padding-top: 30px;
+      font-size: 20px;
+      line-height: 40px;
+    }
+    &__btn {
+      height: 50px;
+      padding-top: 20px;
+      &--like {
+        height: 40px;
+        width: 150px;
+        border: 1px solid $strong_color;
+        border-radius: 20px;
+        background-color: $strong_color;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 15px;
+      }
+    }
+  }
+  .message-box {
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #fff;
+    &__main {
+      .main-box {
+        background-color: #f5f4f4;
+        height: 100px;
+        margin-bottom: 30px;
+        border: 1px solid #e4e2e2;
+        border-radius: 15px;
+        &__info {
+          height: 30px;
+          display: flex;
+          justify-content: space-between;
+          padding: 2px 15px;
+          border-bottom: 1px solid #e4e2e2;
+          align-items: center;
+          .name {
+            font-size: 14px;
+          }
+          .date {
+            font-size: 13px;
+          }
+        }
+        &__text {
+          height: 80px;
+          padding: 5px 15px;
+        }
+      }
+    }
+    &__form {
+      p {
+        padding: 8px;
+        font-size: 14px;
+        background: #fff6de;
+      }
+      .text_area__comment {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 104px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-top: 10px;
+      }
+      .text_area__submit {
+        margin-top: 10px;
+        display: block;
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #fff;
+        background: $strong_color;
+        border: 1px solid $strong_color;
+      }
+    }
+  }
+}
