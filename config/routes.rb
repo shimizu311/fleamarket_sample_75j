@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       get 'buy'
     end
   end
+  resources :cards
 end
