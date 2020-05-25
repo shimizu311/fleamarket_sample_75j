@@ -25,13 +25,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|card_num|integer|null: false|
-|month|integer|null: false|
-|year|integer|null: false|
-|security_code|integer|null: false|
+|card_id|string|null: false|
+|customer_id|string|null: false|
 ### Association
 - belongs_to :user
-
 
 
 ## user_addressesテーブル
@@ -47,7 +44,6 @@
 ### Association
 - belongs_to :user
 - belongs_to :area
-
 
 
 ## areasテーブル
@@ -67,7 +63,7 @@
 |product_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
-- belomngs_to :item
+- belongs_to :item
 
 
 ## likesテーブル
@@ -77,7 +73,7 @@
 |product_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
-- belomngs_to :item
+- belongs_to :item
 
 
 ## itemsテーブル
@@ -87,10 +83,10 @@
 |text|text|null: false|
 |category_id|references|foreign_key: true|
 |brand_id|references|foreign_key: true|
-|damage_id|references|foreign_key: true|
-|fee_id|references|foreign_key: true|
+|damage|integer|null:false|
+|fee|integer|null:false|
 |area_id|references|foreign_key: true|
-|send_date_id|references|foreign_key: true|
+|send_date|integer|null:false|
 |price|integer|null: false|
 |buyer_id|references|foreign_key: true|
 |seller_id|references|foreign_key: true|
@@ -102,9 +98,6 @@
 - belongs_to :area
 - belongs_to :brand
 - belongs_to :category
-- belongs_to :damage
-- belongs_to :fee
-- belongs_to :send_date
 - belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
 - belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 
@@ -112,7 +105,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|product_id|references|foreign_key: true, null :false|
+|item_id|references|foreign_key: true, null :false|
 |image_url|string|null :false|
 ### Association
 - belongs_to :item
@@ -135,32 +128,3 @@
 ### Association
 - has_many :items
 - has_many :brands
-
-
-## damagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|damage|string|null: false|
-### Association
-- has_many :items
-
-
-## feesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|fee|string|null: false|
-### Association
-- has_many :items
-
-
-
-## send_datesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|date|string|null: false|
-### Association
-- has_many :items
-
-
-
-
