@@ -1,11 +1,14 @@
-.wrapper {
+.main-wrapper {
+  background-color: #eeeeee;
+  padding: 40px;
+}
+.wrappe {
   height: 1400px;
   width: 1020px;
-  margin: 40px auto 0;
-  background-color: #99ccff;
+  margin: 0 auto;
 }
 .side-bar {
-  background-color: #ffff99;
+  background-color: white;
   float: left;
   width: 280px;
   margin: 0 40px 0 0;
@@ -17,17 +20,44 @@
   }
 }
 .main-contents {
-  background-color: #ccff99;
   float: right;
   height: 900px;
   width: 700px;
   .my-page {
     background-color: #ead9ff;
     height: 200px;
+    position: relative;
+    padding: 20px;
+    &__user {
+      height: 100px;
+      position: absolute;
+      top: 25%;
+      right: 0;
+      left: 0;
+      &__icon {
+        height: 50px;
+      }
+      &__name {
+        font-size: 14px;
+        margin: 8px 0 0;
+        text-align: center;
+      }
+      &__number {
+        display: flex;
+        font-size: 14px;
+        justify-content: center;
+        &__like {
+        }
+        &__item {
+          margin: 0 0 0 16px;
+        }
+      }
+    }
   }
   .notification-todo {
     background-color: #ffffff;
     height: 250px;
+    text-align: center;
     .notification {
       float: left;
       width: 350px;
@@ -41,5 +71,19 @@
   }
   .logout-form {
     height: 150px;
+    background-color: white;
+    position: relative;
+    &__btn {
+      background-color: red;
+      height: 50px;
+      width: 320px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      line-height: 50px;
+      color: white;
+    }
   }
 }
