@@ -1,3 +1,4 @@
+= render 'layouts/header'
 .main-page
   .items
     %h1.items__name samplesamplesamplesamplesamplesamplesamplesamplesample
@@ -39,3 +40,58 @@
           %tr
             %th 発送日の目安
             %td 1~2日で発送
+    .items__price-box
+      %span.item-price ¥2,980
+      %span.item-tax (税込)
+      %span.item-fee 送料込み
+    = link_to "購入画面に進む", "#", class: "items__buy-btn"
+    .items__comment
+      %p.items__comment--main
+        = "testtesttesttesttest"
+        %br
+        = "testtesttest"
+        %br
+        %br
+        = "testtesttesttesttesttesttesttest"
+        %br
+        = "testtest"
+        %br
+        = "testtesttesttesttest"
+        %br
+        %br
+        = "testtesttesttesttesttesttesttesttesttesttest"
+    .items__btn
+      .items__btn--like
+        = "♡ いいね! 0"
+  .message-box
+    .message-box__main
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+      .main-box
+        .main-box__info
+          .name testA
+          .date 1日前
+        .main-box__text
+          %p testtesttesttesttest
+    .message-box__form
+      = form_for "#" do |f|
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = f.text_area :name, class: "text_area__comment"
+        = f.submit "コメントする", class: "text_area__submit"
+= render 'layouts/footer'
