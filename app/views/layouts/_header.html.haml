@@ -2,9 +2,9 @@
   .header__main
     .header__main__top
       %h1.header__main__top--title
-        = link_to image_tag("logo/logo.png"), "#"
+        = link_to image_tag("logo/logo.png"), root_path
       .search-box
-        = form_for "/" do |f|
+        = form_for "#" do |f|
           = f.text_field :name, class:"search-box__text", placeholder: "キーワードから探す"
           = f.button image_tag("icon/icon-search 1.png")
     .nav
