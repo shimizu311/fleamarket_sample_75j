@@ -12,7 +12,11 @@
         %li
           = link_to "商品一覧", "#"
       %ul.nav__right
-        %li
-          = link_to "ログイン", new_user_session_path
-        %li
-          = link_to "新規会員登録", new_user_registration_path
+        - if user_signed_in?
+          %li
+            = link_to "マイページ", users_path
+        - else
+          %li
+            = link_to "ログイン", new_user_session_path
+          %li
+            = link_to "新規会員登録", new_user_registration_path
