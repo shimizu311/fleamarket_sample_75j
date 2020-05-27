@@ -13,24 +13,37 @@
         .image-wrapper__text
           最大10枚までアップロードできます
         .image-wrapper__image
-          = image_tag 'icon/icon_camera.png', width: "100%"
-          .image-wrapper__image__content 
-            ドラッグアンドドロップ
-            %br/
-            またはクリックしてファイルをアップロード
-          %input.image-wrapper__image__file
+        = f.fields_for :images, @item.images.build do |i|
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          = i.file_field :image_url, multiple: true
+          -# = image_tag 'icon/icon_camera.png', width: "100%"
+          -# .image-wrapper__image__content 
+          -#   ドラッグアンドドロップ
+          -#   %br/
+          -#   またはクリックしてファイルをアップロード
+          -# %input.image-wrapper__image__file
 
       .item-wrapper
         .item-wrapper__name
           商品名
           %span.item-wrapper__name__tag
             必須
-        = f.text_field :name, placeholder: " 40文字まで", class:"item-wrapper__form"
+        -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
+        = f.text_field :name, placeholder: " 40文字まで", class:"item-wrapper__form", value: "test"
         .item-wrapper__description
           商品の説明
           %span.item-wrapper__description__tag
             必須
-        = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area"
+        -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
+        = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area", value: "test"
         %p.item-wrapper__counter{id:"#"}0/1000
       .item-detail
         .item-detail__name
@@ -44,7 +57,9 @@
           ブランド
           %span.item-detail__brand__tag
             任意
-        %input.item-detail__form{placeholder: "例）シャネル"}
+        = f.fields_for :brand, @item.build_brand do |b|
+          = b.text_field :name, placeholder: "例）シャネル", class: "item-detail__form"
+          -# %input.item-detail__form{placeholder: "例）シャネル"}
           .item-detail__status
             商品の状態
             %span.item-detail__status__tag
@@ -77,7 +92,8 @@
             必須
           %span.item-price__name__mark
             ¥
-          = f.text_field :price, placeholder: "0", class: "item-price__name__form"
+          -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
+          = f.text_field :price, placeholder: "0", class: "item-price__name__form", value: "1111"
         .item-price__commission 
           販売手数料(10%)
           %span.item-price__commission__value
