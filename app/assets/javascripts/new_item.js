@@ -44,7 +44,7 @@ $(function() {
       $('.price-error').css('color', 'red');
       $('.price-error').remove();
       $('.item-price__name').after(html);
-      return
+      return html;
     } else {
       var result = price / 10;
       var num = Math.floor(result)
