@@ -5,6 +5,10 @@
 
   .main
     = form_with model: @item, local: true do |f|
+      - if @item.errors.any?
+        %ul
+          - @item.errors.full_messages.each do |msg|
+            %li= msg
       .image-wrapper
         .image-wrapper__label
           出品画像
@@ -13,23 +17,11 @@
         .image-wrapper__text
           最大10枚までアップロードできます
         .image-wrapper__image
-        = f.fields_for :images, @item.images.build do |i|
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          = i.file_field :image_url, multiple: true
-          -# = image_tag 'icon/icon_camera.png', width: "100%"
-          -# .image-wrapper__image__content 
-          -#   ドラッグアンドドロップ
-          -#   %br/
-          -#   またはクリックしてファイルをアップロード
-          -# %input.image-wrapper__image__file
+          .item-num-0#image-box__container
+            = f.fields_for :images do |i|
+              = i.file_field :image_url, multiple: true, name: "images[image_url][]", id: "upload-image", class: "upload-image", 'data-image': 0
+              -# = i.file_field :image_url, multiple: true, value: "", style: "display:none", class: "image-file"
+              -# = i.label :image_url, "ドラッグアンドドロップまたはクリックしてファイルをアップロード"
 
       .item-wrapper
         .item-wrapper__name
@@ -44,7 +36,9 @@
             必須
         -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
         = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area", value: "test"
-        %p.item-wrapper__counter{id:"#"}0/1000
+        %p.item-wrapper__counter{id:"#"}
+          %span.now_count 0
+          = "/1000"
       .item-detail
         .item-detail__name
           商品の詳細
@@ -57,7 +51,7 @@
           ブランド
           %span.item-detail__brand__tag
             任意
-        = f.fields_for :brand, @item.build_brand do |b|
+        = f.fields_for :brand do |b|
           = b.text_field :name, placeholder: "例）シャネル", class: "item-detail__form"
           -# %input.item-detail__form{placeholder: "例）シャネル"}
           .item-detail__status

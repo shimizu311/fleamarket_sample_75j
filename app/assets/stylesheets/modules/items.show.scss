@@ -14,32 +14,26 @@
       overflow-wrap: break-word;
     }
     &__contents {
-      height: 500px;
       margin-bottom: 20px;
       display: flex;
       &--image {
-        height: 100%;
-        width: 300px;
         background-color: #fafafa;
         .image__main {
-          height: 300px;
-          width: 300px;
-          img {
-            cursor: default;
-          }
-        }
-        .image__lists {
-          display: flex;
-          .image {
-            height: 60px;
-            width: 60px;
+          li {
             list-style: none;
-            display: table-cell;
-            line-height: 60px;
-            text-align: center;
             img {
-              cursor: default;
-              vertical-align: middle;
+              object-fit: contain;
+              width: 300px;
+              height: 300px;
+            }
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              width: 300px;
+              .image__list {
+                width: 60px;
+                height: 60px;
+              }
             }
           }
         }
@@ -52,10 +46,10 @@
           border: 1px solid #e2dfdf;
           tr {
             font-size: 14px;
-            @include underline;
+            @include undersolidline;
             th {
               border-right: 1px solid #e2dfdf;
-              @include underline;
+              @include undersolidline;
               font-weight: normal;
               width: 140px;
               text-align: left;
@@ -63,7 +57,7 @@
               background-color: #fafafa;
             }
             td {
-              @include underline;
+              @include undersolidline;
               width: 210px;
               padding: 15px 0 15px 5px;
             }
