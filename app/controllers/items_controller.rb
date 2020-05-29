@@ -23,8 +23,6 @@ class ItemsController < ApplicationController
 
   def show
     @item   = Item.find(params[:id])
-    # @image  = Item.includes([:images])
-    # @user   = User.find(params[:id])
   end
 
   def edit
