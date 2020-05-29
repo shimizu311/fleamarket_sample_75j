@@ -36,18 +36,17 @@
       width: 90%;
       margin: 0 auto;
       margin-bottom: 20px;
-      border: 1px solid #eaebab;
-      background-color: #eaebab;
+      border: 1px solid #EAEBAB;
+      background-color: #EAEBAB;
       color: red;
       li {
         list-style: none;
         padding: 5px 10px;
       }
-
     }
     .image-wrapper{
       padding-bottom: 40px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       &__label{
         font-weight: bold;
         font-size: 14px;
@@ -80,7 +79,7 @@
           // width: 100%;
           background-color: #EEEEEE;
           // margin: 0 auto;
-          border: dashed 1px #cccccc;
+          border: dashed 1px #CCCCCC;
           // text-align: center;
           // position: relative;
           display: flex;
@@ -110,7 +109,7 @@
         // i {
         //   padding: 5px;
         //   margin-top: 50px ;
-        //   opacity: 0.5;     
+        //   opacity: 0.5;
         // }
         &__content{
           // position: absolute;
@@ -124,10 +123,9 @@
         }
       }
     }
-
     .item-wrapper{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       &__name{
         font-weight: bold;
         font-size: 14px;
@@ -188,10 +186,9 @@
         opacity: 0.8;
       }
     }
-
     .item-detail{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       background-color: white;
       &__name{
         font-weight: bold;
@@ -275,10 +272,9 @@
         font-size: 16px;
       }
     }
-
     .item-cost{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       background-color: white;
       &__about{
         font-size: 14px;
@@ -361,7 +357,6 @@
         font-size: 16px;
       }
     }
-
     .item-price{
       padding-bottom: 20px;
       background-color: white;
@@ -422,10 +417,9 @@
         }
       }
     }
-
     .item-exhibition{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       background-color: white;
       text-align: center;
       &__btn{
@@ -444,7 +438,7 @@
         margin: 20px 0;
         a{
           text-decoration:none;
-          color: #0095ee;
+          color: #0095EE;
           font-size: 14px;
         }
         &:hover{
@@ -476,9 +470,8 @@
       height: 50px;
       margin: 0 auto;
     }
-  } 
+  }
 }
-
 .item-num-0{
   width: 100%;
 }

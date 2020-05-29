@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2020_05_25_095429) do
     t.text "text", null: false
     t.bigint "category_id"
     t.bigint "brand_id"
-    t.integer "damage_id"
-    t.integer "fee_id", null: false
+    t.integer "damage", null: false
+    t.integer "fee", null: false
     t.bigint "area_id"
-    t.integer "send_date_id", null: false
+    t.integer "send_date", null: false
     t.integer "price", null: false
     t.bigint "buyer_id"
     t.bigint "seller_id"

@@ -1,4 +1,4 @@
-= render 'layouts/header'
+= render "layouts/header"
 .main-page
   .items
     %h1.items__name
@@ -12,6 +12,7 @@
               - @item.images.each do |image|
                 %li
                   = image_tag image.image_url.url, class: "image__list"
+
       .items__contents--info
         %table.items__contents--info--box
           %tr
@@ -19,18 +20,21 @@
               出品者
             %td
               = link_to "#" do
+
                 = @item.seller.nickname
           %tr
             %th
               カテゴリー
             %td
               = link_to "#" do
+
                 = @item.category.name
           %tr
             %th
               ブランド
             %td
               = link_to "#" do
+
                 = @item.brand.name
           %tr
             %th
@@ -101,3 +105,4 @@
         = f.text_area :name, class: "text_area__comment"
         = f.submit "コメントする", class: "text_area__submit"
 = render 'layouts/footer'
+
