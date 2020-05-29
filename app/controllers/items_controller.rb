@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render "new"
+
     end
   end
 
@@ -36,7 +37,7 @@ class ItemsController < ApplicationController
 
   def buy
   end
-
+  
   private
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url], brand_attributes: [:id, :name]).merge(seller_id: current_user.id)

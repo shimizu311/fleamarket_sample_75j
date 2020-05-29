@@ -1,4 +1,4 @@
-= render 'layouts/header'
+= render "layouts/header"
 .main-page
   .items
     %h1.items__name
@@ -12,6 +12,7 @@
               - @item.images.each do |image|
                 %li
                   = image_tag image.image_url.url, class: "image__list"
+
       .items__contents--info
         %table.items__contents--info--box
           %tr
@@ -19,18 +20,21 @@
               出品者
             %td
               = link_to "#" do
+
                 = @item.seller.nickname
           %tr
             %th
               カテゴリー
             %td
               = link_to "#" do
+
                 = @item.category.name
           %tr
             %th
               ブランド
             %td
               = link_to "#" do
+
                 = @item.brand.name
           %tr
             %th
@@ -62,7 +66,13 @@
         = "￥#{@item.price}"
       %span.item-tax (税込)
       %span.item-fee 送料込み
-    = link_to "購入画面に進む", "#", class: "items__buy-btn"
+      - if user_signed_in? && @item.seller_id != current_user.id
+        = link_to "購入画面に進む", "#", class: "items__buy-btn"
+      - elsif user_signed_in? && @item.seller_id == current_user.id
+        = link_to "商品情報編集", "#", class: "items__edit-btn"
+        = link_to "削除", "#", class: "items__delete-btn"
+      - else
+        = link_to "購入画面に進む", new_user_session_path, class: "items__buy-btn"
     .items__comment
       %p.items__comment--main
         =@item.text
