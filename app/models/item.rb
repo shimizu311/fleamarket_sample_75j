@@ -14,7 +14,6 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
   # belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
   validates_associated :images
-
   validates :name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, presence: true
   # validates :images, presence: true
 end

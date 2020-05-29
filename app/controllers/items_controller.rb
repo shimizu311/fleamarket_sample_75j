@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items =Item.limit(3).where(buyer_id: nil).order(created_at: :desc)
   end
 
   def new
@@ -9,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @item = Item.new(item_params)
     if @item.save
       params[:images][:image_url].each do |i|
