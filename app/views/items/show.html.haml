@@ -66,7 +66,13 @@
         = "￥#{@item.price}"
       %span.item-tax (税込)
       %span.item-fee 送料込み
-    = link_to "購入画面に進む", "#", class: "items__buy-btn"
+      - if user_signed_in? && @item.seller_id != current_user.id
+        = link_to "購入画面に進む", "#", class: "items__buy-btn"
+      - elsif user_signed_in? && @item.seller_id == current_user.id
+        = link_to "商品情報編集", "#", class: "items__edit-btn"
+        = link_to "削除", "#", class: "items__delete-btn"
+      - else
+        = link_to "購入画面に進む", new_user_session_path, class: "items__buy-btn"
     .items__comment
       %p.items__comment--main
         =@item.text
@@ -105,4 +111,3 @@
         = f.text_area :name, class: "text_area__comment"
         = f.submit "コメントする", class: "text_area__submit"
 = render 'layouts/footer'
-
