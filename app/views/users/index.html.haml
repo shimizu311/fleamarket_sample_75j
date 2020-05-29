@@ -22,15 +22,10 @@
         .notification お知らせ
         .todo-list やることリスト
       .logout-form
-        .logout-form__btn ログアウト
+        = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-form__btn'
 .display-btn
   = link_to "", "#"
   %span.display-btn__text
     = "出品する"
   = link_to image_tag("icon/icon_camera.png")
 = render 'layouts/footer'
-      
-
-      
-
-    

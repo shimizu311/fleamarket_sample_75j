@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :buy_items, class_name: 'Item', foreign_key: 'buyer_id'
   has_one :user_address, dependent: :destroy
   has_one :credit_card, dependent: :destroy
+
+  validates :nickname, :surname, :name, :j_surname, :j_name, :year, :month, :day, presence: true
 end
