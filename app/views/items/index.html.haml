@@ -89,8 +89,10 @@
       - @items.each do |item|
         .product-list
           = link_to "", "#"
-          .product-list__img
-            = link_to image_tag("sample_image1.png")
+          - item.images.first(1).each do |image| 
+            .product-list__img
+              = link_to "","#"
+              = image_tag image.image_url.url
           .product-list__box
             .product-list__box--text
               = item.name
@@ -139,51 +141,54 @@
     %h3.products-box__sub-title
       = "アーカイバ"
     .products-box__lists
-      .product-list
-        = link_to "", "#"
-        .product-list__img
-          = link_to image_tag("sample_image1.png")
-        .product-list__box
-          .product-list__box--text
-            = "product3"
-          .product-list__box--info
-            %ul
-              %li
-                = "30000円"
-              %li
-                = "★ 0"
-            %p
-              = "(税込)"
-      .product-list
-        = link_to "", "#"
-        .product-list__img
-          = link_to image_tag("sample_image2.png")
-        .product-list__box
-          .product-list__box--text
-            = "product2"
-          .product-list__box--info
-            %ul
-              %li
-                = "20000円"
-              %li
-                = "★ 0"
-            %p
-              = "(税込)"
-      .product-list
-        = link_to "", "#"
-        .product-list__img
-          = link_to image_tag("sample_image3.png")
-        .product-list__box
-          .product-list__box--text
-            = "product1"
-          .product-list__box--info
-            %ul
-              %li
-                = "10000円"
-              %li
-                = "★ 0"
-            %p
-              = "(税込)"
+      - @items.each do |item|
+        .product-list
+          = link_to "", "#"
+          - item.images.first(1).each do |image| 
+            .product-list__img
+              = link_to "","#"
+              = image_tag image.image_url.url
+          .product-list__box
+            .product-list__box--text
+              = item.name
+            .product-list__box--info
+              %ul
+                %li
+                  = item.price
+                %li
+                  = "★ 0"
+              %p
+                = "(税込)"
+      -# .product-list
+      -#   = link_to "", "#"
+      -#   .product-list__img
+      -#     = link_to image_tag("sample_image2.png")
+      -#   .product-list__box
+      -#     .product-list__box--text
+      -#       = "product2"
+      -#     .product-list__box--info
+      -#       %ul
+      -#         %li
+      -#           = "20000円"
+      -#         %li
+      -#           = "★ 0"
+      -#       %p
+      -#         = "(税込)"
+      -# .product-list
+      -#   = link_to "", "#"
+      -#   .product-list__img
+      -#     = link_to image_tag("sample_image3.png")
+      -#   .product-list__box
+      -#     .product-list__box--text
+      -#       = "product1"
+      -#     .product-list__box--info
+      -#       %ul
+      -#         %li
+      -#           = "10000円"
+      -#         %li
+      -#           = "★ 0"
+      -#       %p
+      -#         = "(税込)"
 .display-btn
   = link_to "", new_item_path
   %span.display-btn__text
