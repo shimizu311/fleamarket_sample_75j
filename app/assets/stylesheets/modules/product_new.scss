@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+@mixin errors {
+  display: contents;
+  input {
+    border: 1px solid red;
+  }
+}
+
 .wrapper{
   width: 100vw;
   height: 100vh;
@@ -24,9 +31,22 @@
     margin: 0 auto;
     background-color: white;
     padding: 40px 0 ;
+    form ul {
+      font-size: 14px;
+      width: 90%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      border: 1px solid #EAEBAB;
+      background-color: #EAEBAB;
+      color: red;
+      li {
+        list-style: none;
+        padding: 5px 10px;
+      }
+    }
     .image-wrapper{
       padding-bottom: 40px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       &__label{
         font-weight: bold;
         font-size: 14px;
@@ -50,48 +70,40 @@
         padding: 0 30px;
       }
       &__image{
-        height: 170px;
-        width: 600px;
-        background-color: #EEEEEE;
-        margin: 0 auto;
-        border: dashed 1px #cccccc;
-        text-align: center;
-        position: relative;
-        &__file {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          opacity: 0;
-        }
-        img{
-          position: absolute;
-          margin-top: 50px;
-          width: 20px;
-          height: 20px;
-        }
-        i {
-          padding: 5px;
-          margin-top: 50px ;
-          opacity: 0.5;     
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        margin: 0 50px;
+        #image-box__container {
+          height: 170px;
+          background-color: #EEEEEE;
+          border: dashed 1px #cccccc;
+          display: flex;
+          flex-wrap: wrap;
+          .input-area {
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            label {
+              cursor: pointer;
+              display: block;
+              padding-top: 75px;
+              height: 100%;
+            }
+          }
         }
         &__content{
-          position: absolute;
           width: 100%;
-          padding-top: 80px;
-          align-items: center;
+          padding-top: 70px;
           font-size: 12px;
-          opacity: 0.8;
-          margin-top: 5px;
+          text-align: center;
         }
       }
     }
-
     .item-wrapper{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       &__name{
         font-weight: bold;
         font-size: 14px;
@@ -108,10 +120,16 @@
           background-color:red;
         }
       }
+      .field_with_errors {
+        @include errors;
+      }
       &__form{
-        margin:0 0px 20px 50px ;
+        margin:0 0 20px 50px ;
         width: 600px;
         height: 40px;
+        font-size: 16px;
+        padding-left: 10px;
+        border-radius: 4px;
       }
       &__description{
         font-weight: bold;
@@ -129,21 +147,26 @@
           background-color:red;
         }
       }
+      .field_with_errors {
+        @include errors;
+      }
       &__area{
         margin: 0 0 10px 50px;
         width: 600px;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 4px;
       }
       &__counter{
-        font-size: 10px;
+        font-size: 12px;
         text-align: right;
         margin-right: 30px ;
         opacity: 0.8;
       }
     }
-
     .item-detail{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       background-color: white;
       &__name{
         font-weight: bold;
@@ -168,10 +191,17 @@
           background-color:red;
         }
       }
+      .field_with_errors {
+        @include errors;
+        select {
+          border: 1px solid red;
+        }
+      }
       &__select{
-        margin: 20px 50px;
+        margin: 20px;
         width: 600px;
         height: 50px;
+        font-size: 16px;
       }
       &__brand{
         font-weight: bold;
@@ -193,6 +223,9 @@
         margin: 10px 50px;
         width: 600px;
         height: 50px;
+        font-size: 16px;
+        padding-left: 10px;
+        border-radius: 4px;
       }
       &__status{
         font-weight: bold;
@@ -209,12 +242,17 @@
           padding: 3px;
           background-color:red;
         }
-      }      
+      }
+      .field_with_errors {
+        @include errors;
+      }
+      &__form {
+        font-size: 16px;
+      }
     }
-
     .item-cost{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       background-color: white;
       &__about{
         font-size: 14px;
@@ -236,10 +274,17 @@
           background-color:red;
         }
       }
+      .field_with_errors {
+        @include errors;
+        select {
+          border: 1px solid red;
+        }
+      }
       &__burden{
-        margin: 10px 50px;
+        margin: 10px 25px;
         width: 600px;
         height: 50px;
+        font-size: 16px;
       }
       &__area{
         font-weight: bold;
@@ -255,11 +300,14 @@
           padding: 3px;
           background-color:red;
         }
-
+        .field_with_errors {
+          @include errors;
+        }
           &__form{
-          margin: 10px 50px;
+          margin: 10px 25px;
           width: 600px;
           height: 50px;
+          font-size: 16px;
         }
       }
       &__days{
@@ -277,13 +325,16 @@
           background-color:red;
         }
       }
+      .field_with_errors {
+        @include errors;
+      }
       &__select{
-        margin: 10px 50px;
+        margin: 10px 25px;
         width: 600px;
         height: 50px;
+        font-size: 16px;
       }
     }
-
     .item-price{
       padding-bottom: 20px;
       background-color: white;
@@ -308,7 +359,7 @@
           background-color:red;
         }
         &__mark{
-          margin-left: 200px ;
+          margin-left: 300px ;
           position: absolute ;
           top: 10px;
         }
@@ -316,13 +367,19 @@
           text-align:right;
           float: right;
           margin-right: 50px;
-          width: 300px;
+          width: 200px;
           height: 40px;
+          padding-right: 10px;
+          font-size: 16px;
+          border-radius: 4px;
         }
+      }
+      .field_with_errors {
+        @include errors;
       }
       &__commission{
         font-size: 14px;
-        margin: 40px 0 10px 25px;
+        margin: 50px 0 10px 25px;
         opacity: 0.8;
         &__value{
           float: right;
@@ -338,10 +395,9 @@
         }
       }
     }
-
     .item-exhibition{
       padding-bottom: 20px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid #CCCCCC;
       background-color: white;
       text-align: center;
       &__btn{
@@ -360,7 +416,7 @@
         margin: 20px 0;
         a{
           text-decoration:none;
-          color: #0095ee;
+          color: #0095EE;
           font-size: 14px;
         }
         &:hover{
@@ -392,5 +448,54 @@
       height: 50px;
       margin: 0 auto;
     }
-  } 
-} 
+  }
+}
+
+.item-num-0,
+.item-num-5{
+  width: 600px;
+}
+.item-num-1,
+.item-num-6{
+  width: 480px;
+}
+.item-num-2,
+.item-num-7{
+  width: 360px;
+}
+.item-num-3,
+.item-num-8{
+  width: 240px;
+}
+.item-num-4,
+.item-num-9{
+  width: 120px;
+}
+
+.price-error {
+  color: red;
+  font-size: 14px;
+  padding-top: 20px;
+  padding-left: 350px;
+}
+
+.item-image {
+  border: dashed 1px #cccccc;
+  background-color: #EEEEEE;
+  &__content--icon {
+    background-color: #fff;
+    img {
+      object-fit: contain;
+    }
+  }
+  &__operetion {
+    &--delete {
+      cursor: pointer;
+      height: 44px;
+      text-align: center;
+      line-height: 44px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}

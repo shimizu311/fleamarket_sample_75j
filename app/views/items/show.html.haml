@@ -1,65 +1,81 @@
-= render 'layouts/header'
+= render "layouts/header"
 .main-page
   .items
-    %h1.items__name samplesamplesamplesamplesamplesamplesamplesamplesample
+    %h1.items__name
+      = @item.name
     .items__contents
       .items__contents--image
-        .image__main
-          = link_to image_tag("sample1.png")
-        %ul.image__lists
-          %li.image
-            = link_to image_tag("sample2.png")
-          %li.image
-            = link_to image_tag("sample3.png")
-          %li.image
-          %li.image
-          %li.image
+        %ul.image__main
+          %li
+            = image_tag @item.images.first.image_url.url, class: "main__image"
+            %ul
+              - @item.images.each do |image|
+                %li
+                  = image_tag image.image_url.url, class: "image__list"
+
       .items__contents--info
         %table.items__contents--info--box
           %tr
-            %th 出品者
-            %td taichi
+            %th
+              出品者
+            %td
+              = link_to "#" do
+
+                = @item.seller.nickname
           %tr
-            %th カテゴリー
-            %td インナー
+            %th
+              カテゴリー
+            %td
+              = link_to "#" do
+
+                = @item.category.name
           %tr
-            %th ブランド
-            %td 
+            %th
+              ブランド
+            %td
+              = link_to "#" do
+
+                = @item.brand.name
           %tr
-            %th 商品の状態
-            %td 新品、未使用
+            %th
+              商品の状態
+            %td
+              = @item.damage.name
           %tr
-            %th 配送料の負担
-            %td 送料込み（出品者負担）
+            %th
+              配送料の負担
+            %td
+              = @item.fee.name
           %tr
-            %th 配送の方法
-            %td 普通郵便(定形、定形外)
+            %th
+              配送の方法
+            %td
+              = "未定"
           %tr
-            %th 配送元地域
-            %td 東京都
+            %th
+              配送元地域
+            %td
+              = @item.area.name
           %tr
-            %th 発送日の目安
-            %td 1~2日で発送
+            %th
+              発送日の目安
+            %td
+              = @item.send_date.name
     .items__price-box
-      %span.item-price ¥2,980
+      %span.item-price
+        = "￥#{@item.price}"
       %span.item-tax (税込)
       %span.item-fee 送料込み
-    = link_to "購入画面に進む", "#", class: "items__buy-btn"
+      - if user_signed_in? && @item.seller_id != current_user.id
+        = link_to "購入画面に進む", "#", class: "items__buy-btn"
+      - elsif user_signed_in? && @item.seller_id == current_user.id
+        = link_to "商品情報編集", "#", class: "items__edit-btn"
+        = link_to "削除", "#", class: "items__delete-btn"
+      - else
+        = link_to "購入画面に進む", new_user_session_path, class: "items__buy-btn"
     .items__comment
       %p.items__comment--main
-        = "testtesttesttesttest"
-        %br
-        = "testtesttest"
-        %br
-        %br
-        = "testtesttesttesttesttesttesttest"
-        %br
-        = "testtest"
-        %br
-        = "testtesttesttesttest"
-        %br
-        %br
-        = "testtesttesttesttesttesttesttesttesttesttest"
+        =@item.text
     .items__btn
       .items__btn--like
         = "♡ いいね! 0"
