@@ -1,0 +1,79 @@
+.user_session
+  = render "devise/devise-header"
+  .main
+    .top
+      %h2 発送元・お届け先情報入力
+    .user_form
+      = form_for @user_address do |f|
+        .field
+          .field__upper
+            .field__upper__label
+              = f.label "郵便番号"
+            .field__upper__required
+              必須
+          .field__lower
+            = f.text_field :postal_code, class: 'field__lower__input', placeholder: '例）1234567'
+          - if @user_address.errors.include?(:postal_code)
+            .error_message
+              = @user_address.errors.full_messages_for(:postal_code).first
+        .field
+          .field__upper
+            .field__upper__label
+              = f.label "都道府県"
+            .field__upper__required
+              必須
+          .field__lower
+            = f.collection_select :area_id, Area.all, :id, :name, {prompt: "選択してください"}, {class: "field__lower__input"}
+          - if @user_address.errors.include?(:area_id)
+            .error_message
+              = @user_address.errors.full_messages_for(:area_id).first
+        .field
+          .field__upper
+            .field__upper__label
+              = f.label "市区町村"
+            .field__upper__required
+              必須
+          .field__lower
+            = f.text_field :city, class: 'field__lower__input', placeholder: '例）渋谷区'
+          - if @user_address.errors.include?(:city)
+            .error_message
+              = @user_address.errors.full_messages_for(:city).first
+        .field
+          .field__upper
+            .field__upper__label
+              = f.label "番地"
+            .field__upper__required
+              必須
+          .field__lower
+            = f.text_field :house_number, class: 'field__lower__input', placeholder: '例）神南1-12-16'
+          - if @user_address.errors.include?(:house_number)
+            .error_message
+              = @user_address.errors.full_messages_for(:house_number).first
+        .field
+          .field__upper
+            .field__upper__label
+              = f.label "建物名"
+            .field__upper__optional
+              任意
+          .field__lower
+            = f.text_field :building_name, class: 'field__lower__input', placeholder: '例）アジアビル8F'
+          - if @user_address.errors.include?(:building_name)
+            .error_message
+              = @user_address.errors.full_messages_for(:building_name).first
+        .field
+          .field__upper
+            .field__upper__label
+              = f.label "電話番号"
+            .field__upper__optional
+              任意
+          .field__lower
+            = f.text_field :tel, class: 'field__lower__input', placeholder: '例）09012345678'
+          - if @user_address.errors.include?(:tel)
+            .error_message
+              = @user_address.errors.full_messages_for(:tel).first
+        .explanation
+          .explanation__lower
+            「登録する」のボタンを押すことにより、利用規約に同意したものとみなします
+        .actions
+          = f.submit '登録する', class: 'submit-btn'
+  = render "devise/devise-footer"

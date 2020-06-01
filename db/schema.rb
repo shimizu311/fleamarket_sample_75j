@@ -57,15 +57,14 @@ ActiveRecord::Schema.define(version: 2020_05_30_082502) do
 
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "postal_code", null: false
-    t.bigint "area_id"
+    t.string "postal_code", null: false
     t.string "city", null: false
     t.string "house_number", null: false
     t.string "building_name"
-    t.integer "tel"
+    t.string "tel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["area_id"], name: "index_user_addresses_on_area_id"
+    t.integer "area_id"
     t.index ["user_id"], name: "index_user_addresses_on_user_id"
   end
 
@@ -90,6 +89,5 @@ ActiveRecord::Schema.define(version: 2020_05_30_082502) do
   end
 
   add_foreign_key "images", "items"
-  add_foreign_key "user_addresses", "areas"
   add_foreign_key "user_addresses", "users"
 end

@@ -35,15 +35,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|postal_code|integer|null: false|
-|area_id|references|foreign_key: true|
+|postal_code|string|null: false|
+|area_id|integer|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string||
-|tel|integer||
+|tel|string||
 ### Association
-- belongs_to :user
-- belongs_to :area
+- belongs_to :user, optional: true
+- belongs_to_active_hash :area
 
 
 ## areasテーブル
@@ -83,7 +83,7 @@
 |text|text|null: false|
 |category_id|references|foreign_key: true|
 |brand_id|references|foreign_key: true|
-|damage|integer|null:false|
+|damage_id|integer|null:false|
 |fee|integer|null:false|
 |area_id|references|foreign_key: true|
 |send_date|integer|null:false|
