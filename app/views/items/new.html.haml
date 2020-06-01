@@ -19,23 +19,21 @@
         .image-wrapper__image
           .item-num-0#image-box__container
             = f.fields_for :images do |i|
-              = i.file_field :image_url, multiple: true, name: "images[image_url][]", id: "upload-image", class: "upload-image", 'data-image': 0
-              -# = i.file_field :image_url, multiple: true, value: "", style: "display:none", class: "image-file"
-              -# = i.label :image_url, "ドラッグアンドドロップまたはクリックしてファイルをアップロード"
+              .input-area
+                = i.file_field :image_url, type: 'file', name: "item[images_attributes][][image_url]",value:"", style: "display:none", id: "img-file"
+                = i.label :image_url, "クリックして画像を投稿", {for: "img-file"}
 
       .item-wrapper
         .item-wrapper__name
           商品名
           %span.item-wrapper__name__tag
             必須
-        -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
-        = f.text_field :name, placeholder: " 40文字まで", class:"item-wrapper__form", value: "test"
+        = f.text_field :name, placeholder: " 40文字まで", class:"item-wrapper__form"
         .item-wrapper__description
           商品の説明
           %span.item-wrapper__description__tag
             必須
-        -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
-        = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area", value: "test"
+        = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area"
         %p.item-wrapper__counter{id:"#"}
           %span.now_count 0
           = "/1000"
@@ -53,7 +51,6 @@
             任意
         = f.fields_for :brand do |b|
           = b.text_field :name, placeholder: "例）シャネル", class: "item-detail__form"
-          -# %input.item-detail__form{placeholder: "例）シャネル"}
           .item-detail__status
             商品の状態
             %span.item-detail__status__tag
@@ -86,8 +83,7 @@
             必須
           %span.item-price__name__mark
             ¥
-          -# 入力欄に確認用として初期値valueを入れてますが、後で消します。
-          = f.text_field :price, placeholder: "0", class: "item-price__name__form", value: "1111"
+          = f.text_field :price, placeholder: "0", class: "item-price__name__form"
         .item-price__commission 
           販売手数料(10%)
           %span.item-price__commission__value
@@ -101,7 +97,7 @@
         = f.hidden_field :seller_id, value: current_user
         = f.submit "出品する", class: "item-exhibition__btn"
         .item-exhibition__back
-          %a{href: "http://54.178.68.27/"} もどる
+          = link_to "もどる", "/"
         .item-exhibition__text
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、
           %br/
