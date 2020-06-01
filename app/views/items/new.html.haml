@@ -1,7 +1,5 @@
 .wrapper
-  .header
-    = link_to root_path do
-      = image_tag 'logo/logo.png'
+  = render 'items/item-header'
 
   .main
     = form_with model: @item, local: true do |f|
@@ -103,11 +101,4 @@
           %br/
           法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
-    .item-footer
-      %ul.item-footer_list
-        %li プライバシーポリシー
-        %li メルカリ利用規約
-        %li 特定商取引に関する表記
-    .item-logo
-      = link_to root_path do
-        = image_tag 'logo/logo-white.png'
+    = render "items/item-footer"
