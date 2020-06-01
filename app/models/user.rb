@@ -9,5 +9,9 @@ class User < ApplicationRecord
   has_one :user_address, dependent: :destroy
   has_one :credit_card, dependent: :destroy
 
-  validates :nickname, :surname, :name, :j_surname, :j_name, :year, :month, :day, presence: true
+  validates :nickname, :year, :month, :day, presence: true
+  validates :surname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :j_surname, presence: true, format: { with: /\A[ぁ-んー－]+\z/ }
+  validates :j_name, presence: true, format: { with: /\A[ぁ-んー－]+\z/ }
 end
