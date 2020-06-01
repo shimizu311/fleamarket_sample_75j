@@ -88,11 +88,10 @@
     .products-box__lists
       - @items.each do |item|
         .product-list
-          = link_to "", "#"
           - item.images.first(1).each do |image| 
             .product-list__img
-              = link_to "","#"
-              = image_tag image.image_url.url
+              = link_to item_path(item.id) do
+                = image_tag image.image_url.url
           .product-list__box
             .product-list__box--text
               = item.name
@@ -113,11 +112,10 @@
     .products-box__lists
       - @items.each do |item|
         .product-list
-          = link_to "", "#"
           - item.images.first(1).each do |image| 
             .product-list__img
-              = link_to "","#"
-              = image_tag image.image_url.url
+              = link_to item_path(item.id) do
+                = image_tag image.image_url.url
           .product-list__box
             .product-list__box--text
               = item.name
