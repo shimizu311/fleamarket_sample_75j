@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items =Item.limit(3).where(buyer_id: nil).order(created_at: :desc)
   end
 
   def new
@@ -14,6 +15,7 @@ class ItemsController < ApplicationController
       redirect_to action: "index"
     else
       render "new"
+
     end
   end
 
@@ -32,7 +34,7 @@ class ItemsController < ApplicationController
 
   def buy
   end
-
+  
   private
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url], brand_attributes: [:name]).merge(seller_id: current_user.id)
