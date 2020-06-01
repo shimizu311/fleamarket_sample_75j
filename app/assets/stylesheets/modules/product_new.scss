@@ -71,15 +71,26 @@
       }
       &__image{
         display: flex;
+        width: 100%;
         flex-wrap: wrap;
-        margin: 0 65px;
+        margin: 0 50px;
         #image-box__container {
+          height: 170px;
           background-color: #EEEEEE;
           border: dashed 1px #cccccc;
           display: flex;
           flex-wrap: wrap;
-          img {
-            width: 20px;
+          .input-area {
+            width: 100%;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            label {
+              cursor: pointer;
+              display: block;
+              padding-top: 75px;
+              height: 100%;
+            }
           }
         }
         &__content{
@@ -439,36 +450,26 @@
     }
   }
 }
-.item-num-0{
-  width: 100%;
-}
-.item-num-1{
-  width: 491px;
-}
-.item-num-2{
-  width: 363px;
-}
-.item-num-3{
-  width: 234px;
-}
-.item-num-4{
-  width: 106px;
-}
-//下段のfile_field
+
+.item-num-0,
 .item-num-5{
-  width: 100%;
+  width: 600px;
 }
+.item-num-1,
 .item-num-6{
-  width: 491px;
+  width: 480px;
 }
+.item-num-2,
 .item-num-7{
-  width: 363px;
+  width: 360px;
 }
+.item-num-3,
 .item-num-8{
-  width: 234px;
+  width: 240px;
 }
+.item-num-4,
 .item-num-9{
-  width: 106px;
+  width: 120px;
 }
 
 .price-error {
@@ -476,4 +477,25 @@
   font-size: 14px;
   padding-top: 20px;
   padding-left: 350px;
+}
+
+.item-image {
+  border: dashed 1px #cccccc;
+  background-color: #EEEEEE;
+  &__content--icon {
+    background-color: #fff;
+    img {
+      object-fit: contain;
+    }
+  }
+  &__operetion {
+    &--delete {
+      cursor: pointer;
+      height: 44px;
+      text-align: center;
+      line-height: 44px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
 }
