@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :users
   resources :items do
+    collection do
+      get 'get_category_children', dafaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     member do
       get 'confirm'
       post 'pay'
