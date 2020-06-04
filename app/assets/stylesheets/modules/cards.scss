@@ -1,136 +1,102 @@
-
-  .cards-content {
-    height: 600px;
-    width: 700px;
-    background-color: white;
-    float: right;
-    &__upper {
-      height: 50px;
-      font-size: 24px;
-      padding: 8px 24px;
-      border-bottom: 1px solid #eeeeee;
-      text-align: center;
+.cards-content {
+  width: 700px;
+  background-color: white;
+  &__upper {
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 24px;
+    border-bottom: 1px solid #eeeeee;
+    text-align: center;
+  }
+  &__lower {
+    padding: 40px 40px 60px;
+    .card_field {
+      padding: 10px 0;
+      width: 350px;
+      margin: 0 auto;
+      &__upper {
+        display: flex;
+        &__label {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__required {
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 12px;
+          border-radius: 2px;
+          padding: 2px 4px;
+          margin-left: 8px;
+        }
+      }
+      &__lower {
+        display: flex;
+        .input {
+          height: 48px;
+          width: 100%;
+          font-size: 16px;
+          margin-top: 8px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+        .input-exp {
+          width: 25%;
+          height: 48px;
+          font-size: 16px;
+          margin-top: 8px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+        span {
+          font-size: 14px;
+          margin: 24px 8px 0;
+        }
+      }
+      &__logos {
+        margin-top: 4px;
+        .card_logos {
+          height: 20px;
+        }
+      }
+      &__btn {
+        width: 100%;
+        background-color: #ea352d;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        line-height: 48px;
+        border-style: none;
+      }
     }
-    &__lower {
-      padding: 40px 40px 65px;
-      height: 510px;
-      &__wrapper {
-        width: 350px;
-        height: 100%;
-        margin: 0 auto;
-        &__group {
-          height: 100px;
-          &__name {
-            width: 70px;
-            height: 18px;
-            font-size: 14px;
-            display: inline-block;        
-          }
-          &__tag {
-            background-color: red;
-            font-size: 12px;
-            margin: 0 0 0 8px;          
-            width: 32px;
-            height: 19px;
-            text-align: center;
-            color: white;
-            border-radius: 2px;
-          }
-          &__form {
-            height: 50px;
-            width: 100%;
-            margin: 8px 0 0;
-            padding: 10px 16px 8px;
-            font-size: 16px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-          }
-          &__logo {
-            width: 45px;
-            display: flex;
-            object-fit: contain;
-          }
+    &__inner {
+      max-width: 320px;
+      margin: 0 auto;
+      font-size: 16px;
+      font-weight: bold;
+      position: relative;
+      .card-info {
+        font-size: 14px;
+        font-weight: initial;
+        .card-logo {
+          height: 40px;
         }
-        &__expire {
-          height: 100px;
-          margin-top: 32px;
-          &__name {
-            width: 70px;
-            height: 18px;
-            font-size: 14px;
-            display: inline-block;
-          }
-          &__tag {
-            background-color: red;
-            font-size: 12px;
-            margin: 0 0 0 8px;          
-            width: 32px;
-            height: 19px;
-            text-align: center;
-            color: white;
-            border-radius: 2px;
-          }
-          &__select {
-            display: flex;
-          }
-            &__select-half {
-              width: calc(50% - 2px);
-              font-size: 14px;
-              margin: 8px 0 0;
-              &__select {
-                width: calc(100% - 38px);
-                height: 50px;
-                background-color: white;
-                font-size: 16px;
-              }
-            }
-          }
-        &__security {
-          height: 100px;
-          margin-top: 32px;
-          &__name {
-            width: 140px;
-            height: 18px;
-            font-size: 14px;
-            display: inline-block;        
-          }
-          &__tag {
-            background-color: red;
-            font-size: 12px;
-            margin: 0 0 0 8px;          
-            width: 32px;
-            height: 19px;
-            text-align: center;
-            color: white;
-            border-radius: 2px;
-          }
-          &__form {
-            height: 50px;
-            width: 100%;
-            margin: 8px 0 0;
-            padding: 10px 16px 8px;
-            font-size: 16px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-          }
-        }
-        &__add {
-          height: 100px;
-          background-color: white;
-          position: relative;
-          &__btn {
-            background-color: red;
-            height: 50px;
-            width: 320px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            text-align: center;
-            line-height: 50px;
-            color: white;
-          }
-        }
+      }
+      .card-delete {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: block;
+        padding: 4px 6px;
+        text-decoration: none;
+        font-size: 14px;
+        background-color: #fff;
+        color: #ea352d;
+        border: 1px solid #ea352d;
+        border-radius: 3px;
       }
     }
   }
+}
