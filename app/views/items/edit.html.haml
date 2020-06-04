@@ -14,24 +14,27 @@
             必須
         .image-wrapper__text
           最大10枚までアップロードできます
-        .image-wrapper__image
-          - @item.images.each do |image|
-            .item-image
-              .item-image__content
-                .item-image__content--icon
-                  = image_tag image.image_url.url, width: "118",height: "118", alt: "preview"
-              .item-image__operation
-                .item-image__operation--delete 削除
-          .item-num-0#image-box__container
+        .post__drop__box__container
+          .prev-content
+            - @item.images.each do |i|
+              .preview-box
+                .upper-box
+                  = image_tag i.image_url.url, width: "118", height: "118", alt: "preview"
+                  .lower-box
+                    .update-box
+                      %label.edit-btn 編集
+                    .delete-box
+                      .delete-btn
+                        %span 削除
+            -# .label-content
+            = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+              %pre.label-box__text-visible クリックして画像を投稿
+          .hidden-content
             = f.fields_for :images do |i|
-              = i.file_field :image_url, class: "hidden-field"
+              = i.file_field :image_url, class: "hidden_field"
               = i.check_box :_destroy, class: "hidden-checkbox"
             - @item.images.length.upto(9) do |i|
-              %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
-            -# = f.file_field :image_url, type: 'file'
-            -# = f.file_field :image_url, type: 'file', name: "item[images_attributes][][image_url]",value:"", id: "img-file"
-              -#   = i.label :image_url, "クリックして画像を投稿", {for: "img-file"}
-
+              %input{name: "item[images_attributes][#{i}[image_url]]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
       .item-wrapper
         .item-wrapper__name
           商品名
