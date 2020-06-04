@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   resources :users
   resources :items do
     member do
-      get 'buy'
+      get 'confirm'
+      post 'pay'
     end
   end
-  resources :cards
+  resources :cards, only: [:new, :create, :show, :destroy] do
+  end
 end

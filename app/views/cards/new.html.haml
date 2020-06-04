@@ -1,0 +1,41 @@
+= render 'layouts/header'
+.main-wrapper
+  .inner-wrapper
+    = render 'users/side-bar'
+    .cards-content
+      .cards-content__upper クレジットカード情報入力
+      .cards-content__lower
+        = form_with url: cards_path, method: :post, id: 'card-form' do|f|
+          .card_field
+            .card_field__upper
+              .card_field__upper__label
+                = f.label 'カード番号'
+              .card_field__upper__required
+                必須
+            .card_field__lower
+              = f.text_field :card_number, placeholder: '半角数字のみ', class: 'input card_number'
+            .card_field__logos
+              = image_tag 'logo/card_logos.png', class: 'card_logos'
+          .card_field
+            .card_field__upper
+              .card_field__upper__label
+                = f.label '有効期限'
+              .card_field__upper__required
+                必須
+            .card_field__lower
+              = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]], {}, class: 'input-exp exp_month'
+              %span 月
+              = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]], {}, class: 'input-exp exp_year'
+              %span 年
+          .card_field
+            .card_field__upper
+              .card_field__upper__label
+                = f.label 'セキュリティコード'
+              .card_field__upper__required
+                必須
+            .card_field__lower
+              = f.text_field :cvc, placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4", class: 'input cvc'
+          .card_field
+            = f.submit '追加する', class: 'card_field__btn', id: 'submit-card'
+= render 'layouts/display-btn'
+= render 'layouts/footer'
