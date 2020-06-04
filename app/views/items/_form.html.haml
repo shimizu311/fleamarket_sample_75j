@@ -1,0 +1,98 @@
+  = form_with model: @item, local: true do |f|
+      - if @item.errors.any?
+        %ul
+          - @item.errors.full_messages.each do |msg|
+            %li= msg
+      .image-wrapper
+        .image-wrapper__label
+          出品画像
+          %span.image-wrapper__label__tag 
+            必須
+        .image-wrapper__text
+          最大10枚までアップロードできます
+        .image-wrapper__image
+          .item-num-0#image-box__container
+            = f.fields_for :images do |i|
+              .input-area
+                = i.file_field :image_url, type: 'file', name: "item[images_attributes][][image_url]",value:"", style: "display:none", id: "img-file"
+                = i.label :image_url, "クリックして画像を投稿", {for: "img-file"}
+
+      .item-wrapper
+        .item-wrapper__name
+          商品名
+          %span.item-wrapper__name__tag
+            必須
+        = f.text_field :name, placeholder: " 40文字まで", class:"item-wrapper__form"
+        .item-wrapper__description
+          商品の説明
+          %span.item-wrapper__description__tag
+            必須
+        = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area"
+        %p.item-wrapper__counter{id:"#"}
+          %span.now_count 0
+          = "/1000"
+      .item-detail
+        .item-detail__name
+          商品の詳細
+        .item-detail__category
+          カテゴリー
+          %span.item-detail__category__tag
+            必須
+          = f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "item-detail__select"}
+        .item-detail__brand
+          ブランド
+          %span.item-detail__brand__tag
+            任意
+        = f.fields_for :brand do |b|
+          = b.text_field :name, placeholder: "例）シャネル", class: "item-detail__form"
+          .item-detail__status
+            商品の状態
+            %span.item-detail__status__tag
+              必須
+          = f.collection_select :damage_id, Damage.all, :id, :name, {prompt: "選択してください"}, {class: "item-detail__form"}
+      .item-cost
+        .item-cost__about
+          配送について
+        .item-cost__name
+          配送料の負担
+          %span.item-cost__name__tag
+            必須
+          = f.collection_select :fee_id, Fee.all, :id, :name, {prompt: "選択してください"}, {class: "item-cost__burden"}
+        .item-cost__area
+          発送元の地域
+          %span.item-cost__area__tag
+            必須
+          = f.collection_select :area_id, Area.all, :id, :name, {prompt: "選択してください"}, {class: "item-cost__area__form"}
+        .item-cost__days
+          発送までの日数
+          %span.item-cost__days__tag
+            必須
+          = f.collection_select :send_date_id, SendDate.all, :id, :name, {prompt: "選択してください"}, {class: "item-cost__select"}
+      .item-price
+        .item-price__about
+          価格(¥300~9,999,999)
+        .item-price__name
+          販売価格
+          %span.item-price__name__tag
+            必須
+          %span.item-price__name__mark
+            ¥
+          = f.text_field :price, placeholder: "0", class: "item-price__name__form"
+        .item-price__commission 
+          販売手数料(10%)
+          %span.item-price__commission__value
+            ー
+        .item-price__profit
+          販売利益
+          %span.item-price__profit__value
+            ー
+
+      .item-exhibition
+        = f.hidden_field :seller_id, value: current_user
+        = f.submit "出品する", class: "item-exhibition__btn"
+        .item-exhibition__back
+          = link_to "もどる", "/"
+        .item-exhibition__text
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、
+          %br/
+          法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。

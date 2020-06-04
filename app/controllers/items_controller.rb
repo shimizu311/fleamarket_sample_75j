@@ -24,9 +24,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    # binding.pry
   end
 
   def update
+    item = Item.find(params[:id])
+    item.update(update_params)
+    redirect_to item_path(item.id)
   end
 
   def destroy
@@ -38,5 +43,9 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url], brand_attributes: [:name]).merge(seller_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes: [:name]).merge(seller_id: current_user.id)
   end
 end

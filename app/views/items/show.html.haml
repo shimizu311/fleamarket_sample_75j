@@ -69,7 +69,7 @@
       - if user_signed_in? && @item.seller_id != current_user.id
         = link_to "購入画面に進む", "#", class: "items__buy-btn"
       - elsif user_signed_in? && @item.seller_id == current_user.id
-        = link_to "商品情報編集", "#", class: "items__edit-btn"
+        = link_to "商品情報編集", edit_item_path, class: "items__edit-btn"
         = link_to "削除", "#", class: "items__delete-btn"
       - else
         = link_to "購入画面に進む", new_user_session_path, class: "items__buy-btn"
