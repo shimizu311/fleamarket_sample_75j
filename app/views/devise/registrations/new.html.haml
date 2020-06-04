@@ -27,28 +27,31 @@
           - if @user.errors.include?(:email)
             .error_message
               = @user.errors.full_messages_for(:email).first
-        .field
-          .field__upper
-            .field__upper__label
-              = f.label "パスワード"
-            .field__upper__required
-              必須
-          .field__lower
-            = f.password_field :password, class: 'field__lower__input', placeholder: '7文字以上の半角英数字'
-          - if @user.errors.include?(:password)
-            .error_message
-              = @user.errors.full_messages_for(:password).first
-        .field
-          .field__upper
-            .field__upper__label
-              = f.label "パスワード(確認)"
-            .field__upper__required
-              必須
-          .field__lower
-            = f.password_field :password_confirmation, class: 'field__lower__input', class: 'field__lower__input', placeholder: 'もう一度入力してください'
-          - if @user.errors.include?(:password_confirmation)
-            .error_message
-              = @user.errors.full_messages_for(:password_confirmation).first
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          .field
+            .field__upper
+              .field__upper__label
+                = f.label "パスワード"
+              .field__upper__required
+                必須
+            .field__lower
+              = f.password_field :password, class: 'field__lower__input', placeholder: '7文字以上の半角英数字'
+            - if @user.errors.include?(:password)
+              .error_message
+                = @user.errors.full_messages_for(:password).first
+          .field
+            .field__upper
+              .field__upper__label
+                = f.label "パスワード(確認)"
+              .field__upper__required
+                必須
+            .field__lower
+              = f.password_field :password_confirmation, class: 'field__lower__input', class: 'field__lower__input', placeholder: 'もう一度入力してください'
+            - if @user.errors.include?(:password_confirmation)
+              .error_message
+                = @user.errors.full_messages_for(:password_confirmation).first
         .explanation
           .explanation__upper
             本人確認

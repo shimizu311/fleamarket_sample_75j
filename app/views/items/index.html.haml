@@ -10,6 +10,9 @@
     .top-img__messages--btn
       = link_to image_tag("app_store.svg"), "#"
       = link_to image_tag("google_play.svg"), "#"
+    .items_omniauth
+      = link_to 'Facebookでログイン／新規会員登録', user_facebook_omniauth_authorize_path, method: :post, class: "items_omniauth__facebook"
+      = link_to 'Google+でログイン／新規会員登録', user_google_oauth2_omniauth_authorize_path, method: :post, class: "items_omniauth__google"
 %section.contents
   %h2.contents__title
     = "FURIMAが選ばれる3つの理由"

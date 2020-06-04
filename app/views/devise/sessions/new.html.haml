@@ -16,4 +16,7 @@
             = f.password_field :password, class: 'field__lower__input', placeholder: 'パスワード'
         .actions
           = f.submit "ログイン", class: 'submit-btn'
+    .user_omniauth
+      = link_to 'Facebookでログイン／新規会員登録', user_facebook_omniauth_authorize_path, method: :post, class: "user_omniauth__facebook"
+      = link_to 'Google+でログイン／新規会員登録', user_google_oauth2_omniauth_authorize_path, method: :post, class: "user_omniauth__google"
   = render "devise/devise-footer"
