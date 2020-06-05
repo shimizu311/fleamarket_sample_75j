@@ -20,13 +20,13 @@
               - @item.images.each_with_index do |image, i|
                 = image_tag image.image_url.url, data:{ index: i }, width: "112", height: "112"
           = f.fields_for :images do |image|
-            .js-file_group{"data-index" => "#{image.index}"}
+            .js-file_group{"data-index": "#{image.index}"}
               = image.file_field :image_url, class: 'js-file'
               %span.js-remove 削除
             - if @item.persisted?
               = image.check_box :_destroy, data:{ index: image.index }, checked: false , class: 'hidden-destroy'
           - if @item.persisted?
-            .js-file_group{"data-index" => "#{@item.images.count}"}
+            .js-file_group{"data-index": "#{@item.images.count}"}
               = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
               %span.js-remove 削除
       .item-wrapper
@@ -40,7 +40,7 @@
           %span.item-wrapper__description__tag
             必須
         = f.text_area :text, placeholder: text_placeholder, rows: 8, class: "item-wrapper__area"
-        %p.item-wrapper__counter{id:"#"}
+        %p.item-wrapper__counter
           %span.now_count 0
           = "/1000"
       .item-detail
