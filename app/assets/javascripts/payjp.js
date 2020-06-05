@@ -15,6 +15,7 @@ $(document).on('turbolinks:load', function () {
     Payjp.createToken(card, function (s, response) {
       if (response.error) {
         alert('カード情報が正しくありません')
+        e.stopPropagation();
         $('#submit-card').prop('disabled', false);
       } else {
         $('.card_number').removeAttr('name');
