@@ -67,10 +67,10 @@
       %span.item-tax (税込)
       %span.item-fee 送料込み
       - if user_signed_in? && @item.seller_id != current_user.id
-        = link_to "購入画面に進む", "#", class: "items__buy-btn"
+        = link_to "購入画面に進む", confirm_item_path(@item.id), class: "items__buy-btn"
       - elsif user_signed_in? && @item.seller_id == current_user.id
         = link_to "商品情報編集", edit_item_path, class: "items__edit-btn"
-        = link_to "削除", "#", class: "items__delete-btn"
+        = link_to "削除", item_path(@item.id), method: :"delete", data: {confirm: "【確認】\n削除すると二度と復活できません。\n本当に削除しますか？"}, class: "items__delete-btn"
       - else
         = link_to "購入画面に進む", new_user_session_path, class: "items__buy-btn"
     .items__comment

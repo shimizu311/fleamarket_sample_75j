@@ -18,10 +18,9 @@
 - has_many :sell_items, class_name: 'Item', foreign_key: 'seller_id'
 - has_many :buy_items, class_name: 'Item', foreign_key: 'buyer_id'
 - has_one :user_address, dependent: :destroy
-- has_one :credit_card, dependent: :destroy
+- has_one :card, dependent: :destroy
 
-
-## credit_cardsテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
