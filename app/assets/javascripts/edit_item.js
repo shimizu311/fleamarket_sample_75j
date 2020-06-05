@@ -8,8 +8,8 @@ $(document).on('turbolinks:load', function(){
                       <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
-                      <div class="update-box">
-                        <label class="edit_btn">編集</label>
+                      <div class="update-box" id="update_btn_${count}">
+                        <span>変更</span>
                       </div>
                       <div class="delete-box" id="delete_btn_${count}">
                         <span>削除</span>
@@ -31,12 +31,24 @@ $(document).on('turbolinks:load', function(){
       $('.delete-box').each(function(index, box){
         $(box).attr('id', `delete_btn_${index}`);
       })
+      $('.update-box').each(function(index, box){
+        $(box).attr('id', `update_btn_${index}`);
+      })
       var count = $('.preview-box').length;
       //プレビューが10あるときは、投稿ボックスを消しておく
       if (count == 10) {
         $('.label-box').hide();
       }
     }
+    // // 既存の画像が削除された時
+    // $(document).on('click', '.delete-box', function() {
+    //   var deleteFiles = $('.delete-box')
+    //   var index = deleteFiles.index(this);
+
+    //   $("input[type='file']").eq(index).();
+      
+    // })
+
 
     // プレビューの追加
     $(document).on('change', '.hidden-field', function() {
@@ -57,8 +69,8 @@ $(document).on('turbolinks:load', function(){
           var count = $('.preview-box').length;
           var html = buildHTML(id);
           //ラベルの直前のプレビュー群にプレビューを追加
-          var prevContent = $('.label-box').prev();
-          $(prevContent).append(html);
+          // var prevContent = $('.label-box').prev();
+          // $(prevContent).append(html);
         }
         //イメージを追加
         $(`#preview-box__${id} img`).attr('src', `${image}`);
@@ -79,6 +91,13 @@ $(document).on('turbolinks:load', function(){
         }
       }
     });
+    $(document).on('click', '.update-box', function() {
+      var updateFiles = $('.update-box')
+      var index = updateFiles.index(this);
+
+      $("input[type='file']").eq(index).click();
+    })
+    
 
     // 画像の削除
     $(document).on('click', '.delete-box', function() {
@@ -105,6 +124,7 @@ $(document).on('turbolinks:load', function(){
 
         //投稿編集時
         $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+        
         //10個めが消されたらラベルを表示
         if (count == 9) {
           $('.label-box').show();
@@ -115,7 +135,7 @@ $(document).on('turbolinks:load', function(){
         //削除したプレビューのidによって、ラベルのidを変更する
         if(id < 10){
           $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
-          $('input[type=file]').prop('disabled', false);
+          // $('.hidden-field').prop('disabled', false);
         }
       }
       //=============================================================================

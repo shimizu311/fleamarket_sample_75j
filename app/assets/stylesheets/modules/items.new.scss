@@ -609,12 +609,15 @@
 
   //file_fieldのcss
   .hidden-content {
-    display: none;
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    // display: none;
     .hidden-field {
-      display: none;
+      // display: none;
     }
     .hidden-checkbox {
-      display: none;
+      // display: none;
     }
   }
 }
