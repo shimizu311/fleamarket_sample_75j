@@ -45,6 +45,7 @@
       }
     }
     .image-wrapper{
+      width: 100%;
       padding-bottom: 40px;
       border-bottom: 1px solid #CCCCCC;
       &__label{
@@ -496,6 +497,34 @@
       line-height: 44px;
       font-size: 14px;
       font-weight: bold;
+    }
+  }
+}
+
+#image-box {
+  padding: 0 40px;
+  #previews {
+    width: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      margin: 5px 2px;
+      border: 1px solid #ccc;
+    }
+  }
+  .js-file_group {
+    cursor: pointer;
+    font-size: 14px;
+    display: inline;
+    input {
+      cursor: pointer;
+    }
+    .js-remove {
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      cursor: pointer;
     }
   }
 }

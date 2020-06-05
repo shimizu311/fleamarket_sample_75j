@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update]
   def index
     @items =Item.limit(3).where(buyer_id: nil).order(created_at: :desc)
   end
@@ -15,18 +16,21 @@ class ItemsController < ApplicationController
       redirect_to action: "index"
     else
       render "new"
-
     end
   end
 
   def show
-    @item   = Item.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    if @item.update(update_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -87,5 +91,13 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url], brand_attributes: [:name]).merge(seller_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes: [:name]).merge(seller_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
