@@ -14,28 +14,21 @@
             必須
         .image-wrapper__text
           最大10枚までアップロードできます
-        .post__drop__box__container
-          .prev-content
-            - @item.images.each do |i|
-              .preview-box
-                .upper-box
-                  = image_tag i.image_url.url, width: "118", height: "118", alt: "preview"
-                  .lower-box
-                    .update-box
-                      .update-btn
-                        %span 編集
-                    .delete-box
-                      .delete-btn
-                        %span 削除
-            -# .label-content
-            = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
-              %pre.label-box__text-visible クリックして画像を投稿
-          .hidden-content
-            = f.fields_for :images do |i|
-              = i.file_field :image_url, class: "hidden_field"
-              = i.check_box :_destroy, class: "hidden-checkbox"
-            - @item.images.length.upto(9) do |i|
-              %input{name: "item[images_attributes][#{i}[image_url]]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+        #image-box
+          #previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.image_url.url, data:{ index: i }, width: "112", height: "112"
+          = f.fields_for :images do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :image_url, class: 'js-file'
+              %span.js-remove 削除
+            - if @item.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, checked: false , class: 'hidden-destroy'
+          - if @item.persisted?
+            .js-file_group{"data-index" => "#{@item.images.count}"}
+              = file_field_tag :image_url, name: "item[images_attributes][#{@item.images.count}][image_url]", class: 'js-file'
+              %span.js-remove 削除
       .item-wrapper
         .item-wrapper__name
           商品名
