@@ -1,0 +1,64 @@
+.wrapper
+  = render 'items/item-header'
+
+  .main-buy
+    .top
+      %h2 購入内容の確認
+    .item
+      .item__image
+        = image_tag @item.images.first.image_url.url, class: "item__image"
+      .item__detail
+        .item__detail__name
+          = @item.name
+        .item__detail__payinfo
+          .item__detail__payinfo--price
+            = "￥#{@item.price}"
+          .item__detail__payinfo--fee
+            = "（税込）#{@item.fee.name}"
+    .pay-info
+      .price
+        .price__left
+          支払い金額
+        .price__right
+          = "￥#{@item.price}"
+      .user-info
+        .user-info__upper
+          .user-info__upper__left
+            支払い方法
+          = link_to card_path(current_user.id), class: 'user-info__upper__right' do
+            変更する
+        - if current_user.card.present?
+          .user-info__middle
+            クレジットカード
+            %br
+            = @card_number_display
+            %br
+            = "有効期限  " + @exp_month_display + " / " + @exp_year_display
+        - else
+          .user-info__middle
+            クレジットカード
+            %br
+            登録がありません
+        .user-info__bottom
+      .user-info
+        .user-info__upper
+          .user-info__upper__left
+            配送先
+          = link_to '#', class: 'user-info__upper__right' do
+            変更する
+        .user-info__middle
+          = current_user.user_address.postal_code_display
+          %br/
+          = current_user.user_address.full_address
+          %br/
+          = current_user.full_name
+      .bottom
+        - if current_user.card.present?
+          = link_to pay_item_path(@item.id), method: :post, class: 'pay-btn' do
+            購入する
+        - else
+          = form_with url: pay_item_path(@item.id), method: :post, class: 'pay-btn' do
+            %script{ src: "https://checkout.pay.jp", class: 'payjp-button', type: "text/javascript", "data-text": "購入する", "data-key": "pk_test_d77268778411e4eb641e2ba4" }
+        = render 'layouts/flash'
+
+  = render "items/item-footer"

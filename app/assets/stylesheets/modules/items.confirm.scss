@@ -45,7 +45,7 @@
     }
   }
 
-  .buy-info {
+  .pay-info {
     max-width: 343px;
     margin: 0 auto;
     padding: 32px 16px 48px;
@@ -78,6 +78,7 @@
         &__right {
           font-size: 14px;
           color: #0099e8;
+          text-decoration: none;
         }
       }
       &__middle {
@@ -88,14 +89,24 @@
     .bottom {
       max-width: 343px;
       padding: 32px 0;
-      input {
+      .pay-btn {
         background-color: #ea352d;
         display: block;
         width: 100%;
         line-height: 48px;
         color: #fff;
         font-size: 14px;
+        text-decoration: none;
+        text-align: center;
       }
     }
   }
+}
+#payjp_checkout_box input[type=button] {
+  background-color: #ea352d;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  color: #fff;
+  font-size: 14px;
 }

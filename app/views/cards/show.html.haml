@@ -1,0 +1,19 @@
+= render 'layouts/header'
+.main-wrapper
+  .inner-wrapper
+    = render 'users/side-bar'
+    .cards-content
+      .cards-content__upper 支払い方法
+      .cards-content__lower
+        .cards-content__lower__inner
+          クレジットカード
+          .card-info
+            = image_tag 'logo/logo-visa.png', class: 'card-logo'
+            %br
+            = @card_number_display
+            %br
+            = @exp_month_display + " / " + @exp_year_display
+          = link_to card_path, method: :delete, class: 'card-delete' do
+            削除する
+= render 'layouts/display-btn'
+= render 'layouts/footer'
