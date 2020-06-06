@@ -4,8 +4,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :fee
   belongs_to_active_hash :send_date
   belongs_to_active_hash :area
-  belongs_to_active_hash :category
 
+  belongs_to :category
   belongs_to :brand
   accepts_nested_attributes_for :brand, allow_destroy: true
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'

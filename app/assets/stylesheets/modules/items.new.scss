@@ -27,10 +27,9 @@
   }
   .main{
     width: 700px;
-    height: 100vh;
     margin: 0 auto;
     background-color: white;
-    padding: 40px 0 ;
+    padding-top: 40px ;
     form ul {
       font-size: 14px;
       width: 90%;
@@ -91,6 +90,10 @@
               display: block;
               padding-top: 75px;
               height: 100%;
+              &:hover{
+                opacity: 0.8;
+                border: 3px solid #386de0;
+              }
             }
           }
         }
@@ -198,11 +201,12 @@
           border: 1px solid red;
         }
       }
-      &__select{
+      .listing-select-wrapper__box--select {
         margin: 20px;
         width: 600px;
         height: 50px;
         font-size: 16px;
+        padding-left: 15px;
       }
       &__brand{
         font-weight: bold;
@@ -225,7 +229,7 @@
         width: 600px;
         height: 50px;
         font-size: 16px;
-        padding-left: 10px;
+        padding-left: 15px;
         border-radius: 4px;
       }
       &__status{
@@ -248,7 +252,7 @@
         @include errors;
       }
       &__form {
-        font-size: 16px;
+        font-size: 16px;;
       }
     }
     .item-cost{
@@ -286,6 +290,7 @@
         width: 600px;
         height: 50px;
         font-size: 16px;
+        padding-left: 15px;
       }
       &__area{
         font-weight: bold;
@@ -309,6 +314,7 @@
           width: 600px;
           height: 50px;
           font-size: 16px;
+          padding-left: 15px;
         }
       }
       &__days{
@@ -334,6 +340,7 @@
         width: 600px;
         height: 50px;
         font-size: 16px;
+        padding-left: 15px;
       }
     }
     .item-price{
@@ -408,6 +415,11 @@
         border-radius: 5px;
         background-color:red;
         color: white;
+        cursor: pointer;
+        transition: 0.2s;
+        &:active {
+          transform: translateY(5px);
+        }
         &:hover{
           opacity: 0.8;
         }
@@ -444,6 +456,7 @@
   }
   .item-logo{
     text-align: center;
+    margin-bottom: 40px;
     img{
       width: 200px;
       height: 50px;
