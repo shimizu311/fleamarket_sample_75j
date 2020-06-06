@@ -72,7 +72,7 @@ RSpec.describe Item, type: :model do
 
     it "seller_idがnullの場合は登録できないこと" do
       item = @item
-      item = build(:item, seller_id: "null")
+      item = build(:item, seller_id: "")
       item.valid?
       expect(item.errors[:seller_id])
     end
