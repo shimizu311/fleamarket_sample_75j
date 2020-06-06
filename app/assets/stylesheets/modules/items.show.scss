@@ -18,6 +18,18 @@
       display: flex;
       &--image {
         background-color: #fafafa;
+        .sold-sign {
+          background-color: #ea352d;
+          width: 300px;
+          line-height: 48px;
+          color: #fff;
+          font-size: 24px;
+          font-weight: bold;
+          text-align: center;
+          position: absolute;
+          z-index: 1;
+          opacity: 0.9;
+        }
         .image__main {
           li {
             list-style: none;
@@ -79,6 +91,17 @@
       .item-fee {
         font-size: 16px;
       }
+    }
+    &__soldout {
+      margin-top: 10px;
+      background-color: #ccc;
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
     }
     &__buy-btn {
       margin-top: 10px;

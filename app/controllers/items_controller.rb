@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @item.build_brand
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -45,6 +44,10 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
 
   require "payjp"
@@ -103,7 +106,7 @@ class ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url], brand_attributes: [:name]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, :brand, images_attributes: [:image_url]).merge(seller_id: current_user.id)
   end
 
   def update_params

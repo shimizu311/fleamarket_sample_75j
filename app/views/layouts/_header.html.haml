@@ -4,13 +4,13 @@
       %h1.header__main__top--title
         = link_to image_tag("logo/logo.png"), root_path
       .search-box
-        = form_for "#" do |f|
-          = f.text_field :name, class:"search-box__text", placeholder: "キーワードから探す"
-          = f.button image_tag("icon/icon-search 1.png")
+        = form_with(url: search_items_path, method: :get, local: true) do |f|
+          = f.text_field :keyword, class: "search-box__text", placeholder: "キーワードから探す"
+          = f.button image_tag("icon/icon-search 1.png"), type: "submit", class: "search-box__btn"
     .nav
       %ul.nav__left
         %li
-          = link_to "商品一覧", "#"
+          = link_to "商品一覧", search_items_path
       %ul.nav__right
         - if user_signed_in?
           %li

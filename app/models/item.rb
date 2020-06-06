@@ -6,8 +6,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
 
   belongs_to :category
-  belongs_to :brand
-  accepts_nested_attributes_for :brand, allow_destroy: true
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
   # belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
 
@@ -19,4 +17,12 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 }
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, presence: true
+
+  def self.search(search)Item.all
+    if search
+      Item.where('name LIKE? OR text LIKE?', "%#{search}%", "%#{search}%").order(created_at: :desc)
+    else
+      Item.all.order(created_at: :desc)
+    end
+  end
 end

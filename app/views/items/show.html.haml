@@ -5,6 +5,8 @@
       = @item.name
     .items__contents
       .items__contents--image
+        - if @item.buyer_id.present?
+          .sold-sign SOLD
         %ul.image__main
           %li
             = image_tag @item.images.first.image_url.url, class: "main__image"
@@ -38,7 +40,7 @@
               ブランド
             %td
               = link_to "#" do
-                = @item.brand.name
+                = @item.brand
           %tr
             %th
               商品の状態
@@ -69,7 +71,9 @@
         = "￥#{@item.price}"
       %span.item-tax (税込)
       %span.item-fee 送料込み
-      - if user_signed_in? && @item.seller_id != current_user.id
+      - if @item.buyer_id.present?
+        .items__soldout 売り切れました
+      - elsif user_signed_in? && @item.seller_id != current_user.id
         = link_to "購入画面に進む", confirm_item_path(@item.id), class: "items__buy-btn"
       - elsif user_signed_in? && @item.seller_id == current_user.id
         = link_to "商品情報編集", edit_item_path, class: "items__edit-btn", data: { "turbolinks" => false }
