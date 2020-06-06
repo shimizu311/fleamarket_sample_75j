@@ -59,7 +59,7 @@
 |------|----|-------|
 |text|text||
 |user_id|references|foreign_key: true|
-|product_id|references|foreign_key: true|
+|item_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item

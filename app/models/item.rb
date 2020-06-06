@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :send_date
   belongs_to_active_hash :area
   belongs_to_active_hash :category
+  has_many :comments, dependent: :destroy
 
   belongs_to :brand
   accepts_nested_attributes_for :brand, allow_destroy: true

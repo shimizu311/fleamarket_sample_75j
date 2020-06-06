@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'confirm'
       post 'pay'
     end
+    resources :comments, only: :create
   end
   resources :cards, only: [:new, :create, :show, :destroy] do
   end

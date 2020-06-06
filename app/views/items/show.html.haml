@@ -79,35 +79,46 @@
     .items__btn
       .items__btn--like
         = "♡ いいね! 0"
+
   .message-box
+    -# - if current_user
     .message-box__main
-      .main-box
-        .main-box__info
-          .name testA
-          .date 1日前
-        .main-box__text
-          %p testtesttesttesttest
-      .main-box
-        .main-box__info
-          .name testA
-          .date 1日前
-        .main-box__text
-          %p testtesttesttesttest
-      .main-box
-        .main-box__info
-          .name testA
-          .date 1日前
-        .main-box__text
-          %p testtesttesttesttest
-      .main-box
-        .main-box__info
-          .name testA
-          .date 1日前
-        .main-box__text
-          %p testtesttesttesttest
+      - if @comments
+        - @comments.each do |comment|
+          .main-box
+            .main-box__info
+              .name
+                = comment.user.nickname
+              .date
+                = comment.created_at
+            .main-box__text
+              = comment.text
+      -#   .main-box__info
+      -#     .name testA
+      -#     .date 1日前
+      -#   .main-box__text
+      -#     %p testtesttesttesttest
+      -# .main-box
+      -#   .main-box__info
+      -#     .name testA
+      -#     .date 1日前
+      -#   .main-box__text
+      -#     %p testtesttesttesttest
+      -# .main-box
+      -#   .main-box__info
+      -#     .name testA
+      -#     .date 1日前
+      -#   .main-box__text
+      -#     %p testtesttesttesttest
+      -# .main-box
+      -#   .main-box__info
+      -#     .name testA
+      -#     .date 1日前
+      -#   .main-box__text
+      -#     %p testtesttesttesttest
     .message-box__form
-      = form_for "#" do |f|
+      = form_for /users/comment.user_id do |f|
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = f.text_area :name, class: "text_area__comment"
+        = f.text_area :text, class: "text_area__comment"
         = f.submit "コメントする", class: "text_area__submit"
 = render 'layouts/footer'
