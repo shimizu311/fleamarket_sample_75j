@@ -50,7 +50,15 @@
           カテゴリー
           %span.item-detail__category__tag
             必須
-          = f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "item-detail__select"}
+          .listing-select-wrapper
+            .listing-select-wrapper__box
+              = f.select :category_id, options_for_select(@category_parents_array.map{|c|[c[:name], c[:name], {'data-category': c[:name]}]}, @selected_parent_category.name), {}, {class: "listing-select-wrapper__box--select", id: "parent_category"}
+          .listing-select-wrapper__added#children_wrapper
+            .listing-select-wrapper__box
+              = f.select :category_id, options_for_select(@category_children_array.map{|c|[c[:name], c[:id], {'data-category': c[:id]}]}, @selected_child_category.id), {}, {class: "listing-select-wrapper__box--select", id: "child_category"}
+          .listing-select-wrapper__added#grandchildren_wrapper
+            .listing-select-wrapper__box
+              = f.select :category_id, options_for_select(@category_grandchildren_array.map{|c|[c[:name], c[:id], {'data-category': c[:id]}]}, @selected_grandchild_category.id), {}, {class: "listing-select-wrapper__box--select", id: "grandchild_category"}
         .item-detail__brand
           ブランド
           %span.item-detail__brand__tag
