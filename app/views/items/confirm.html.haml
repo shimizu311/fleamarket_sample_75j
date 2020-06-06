@@ -59,6 +59,5 @@
         - else
           = form_with url: pay_item_path(@item.id), method: :post, class: 'pay-btn' do
             %script{ src: "https://checkout.pay.jp", class: 'payjp-button', type: "text/javascript", "data-text": "購入する", "data-key": "pk_test_d77268778411e4eb641e2ba4" }
-        = render 'layouts/flash'
 
   = render "items/item-footer"

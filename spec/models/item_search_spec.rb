@@ -4,9 +4,9 @@ describe Item do
 
     before do
       @item             = build(:item)
-      @item.save!
+      @item.save
       @other_item       = build(:other_item)
-      @other_item.save!
+      @other_item.save
     end
 
     # "バッグ"で検索した場合
@@ -18,12 +18,12 @@ describe Item do
       expect(Item.search("バッグ")).to_not include(@other_item)
     end
 
-    # "カバン"で検索した場合
+    # # "カバン"で検索した場合
     it "検索結果がないこと" do
       expect(Item.search("かばん")).to be_empty
     end
 
-    # 検索していない場合
+    # # 検索していない場合
     it "検索ワードがない場合、全レコードを出力すること" do
       expect(Item.search("")).to include(@item, @other_item)
     end
