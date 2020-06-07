@@ -9,11 +9,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @item.build_brand
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    set_category_parent_array
   end
 
   def create
@@ -21,6 +17,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to action: "index"
     else
+      set_category_parent_array
       render "new"
     end
   end
@@ -35,6 +32,7 @@ class ItemsController < ApplicationController
     if @item.update(update_params)
       redirect_to item_path(@item.id)
     else
+      set_category_parent_array
       render :edit
     end
   end
@@ -45,6 +43,10 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
 
   require "payjp"
@@ -93,6 +95,13 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_category_parent_array
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+  end
+
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
@@ -100,14 +109,14 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
-  
+
   private
   def item_params
-    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url], brand_attributes: [:name]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, :brand, images_attributes: [:image_url]).merge(seller_id: current_user.id)
   end
 
   def update_params
-    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, images_attributes: [:image_url, :_destroy, :id], brand_attributes: [:name]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :text, :category_id, :damage_id, :fee_id, :area_id, :send_date_id, :price, :brand, images_attributes: [:image_url, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_item

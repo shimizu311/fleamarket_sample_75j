@@ -63,12 +63,11 @@
           ブランド
           %span.item-detail__brand__tag
             任意
-        = f.fields_for :brand do |b|
-          = b.text_field :name, placeholder: "例）シャネル", class: "item-detail__form"
-          .item-detail__status
-            商品の状態
-            %span.item-detail__status__tag
-              必須
+          = f.text_field :brand, placeholder: "例）シャネル", class: "item-detail__form"
+        .item-detail__status
+          商品の状態
+          %span.item-detail__status__tag
+            必須
           = f.collection_select :damage_id, Damage.all, :id, :name, {prompt: "選択してください"}, {class: "item-detail__form"}
       .item-cost
         .item-cost__about

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', dafaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'search'
     end
     member do
       get 'confirm'

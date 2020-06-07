@@ -1,7 +1,7 @@
 = render 'layouts/header'
 %section.top-img
   .top-img__messages
-    %h2.top-img__messages--title 
+    %h2.top-img__messages--title
       = "人生を変えるフリマアプリ"
     %p.top-img__messages--text
       = "FURIMAはだれでもかんたんに出品・購入できる"
@@ -47,7 +47,7 @@
       = "会員数日本一位"
     %p.sec-img__messages--text
       = "FURIMAは、フリマアプリで最も人気。"
-      %br 
+      %br
       = "出品・購入回数も業界最多です！"
       %br
       = "ほしかったあの商品に出会えるかもしれません。"
@@ -88,7 +88,7 @@
     .products-box__lists
       - @items.each do |item|
         .product-list
-          - item.images.first(1).each do |image| 
+          - item.images.first(1).each do |image|
             .product-list__img
               = link_to item_path(item.id) do
                 = image_tag image.image_url.url
@@ -112,7 +112,7 @@
     .products-box__lists
       - @items.each do |item|
         .product-list
-          - item.images.first(1).each do |image| 
+          - item.images.first(1).each do |image|
             .product-list__img
               = link_to item_path(item.id) do
                 = image_tag image.image_url.url

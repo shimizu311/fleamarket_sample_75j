@@ -1,0 +1,52 @@
+= render 'layouts/header'
+.main-page
+  .search-page
+    .search-side
+      詳細検索
+      = form_with(url: search_items_path, method: :get, local: true) do |f|
+        .search_field
+          .search_field__label
+            = f.label "★カテゴリーを選択する"
+          .search_field__select
+            = f.collection_select :category_id, Category.all, :id, :name
+        .search_field
+          .search_field__label
+            = f.label "★ブランドから探す"
+          .search_field__input
+            = f.text_field :brand, placeholder: "例）シャネル"
+        .search_field
+          .search_field__label
+            = f.label "★商品の状態"
+          .search_field__check
+            = f.collection_check_boxes :damage_id, Damage.all, :id, :name do |b|
+              = b.check_box
+              = b.label
+              %br
+        .search_field
+          .search_field__label
+            = f.label "★配送料の負担"
+          .search_field__check
+            = f.collection_check_boxes :fee_id, Fee.all, :id, :name do |b|
+              = b.check_box
+              = b.label
+              %br
+        .search_field
+          .search_field__label
+            = f.label "★販売状況"
+          .search_field__check
+            = f.check_box :buyer_id
+        .search_field
+          = f.submit "検索", class: 'search_field__submit'
+
+    .search-main
+      .search-main__upper
+        検索結果
+      .search-main__lower
+        .search-items
+          - if @items.present?
+            - @items.each do |item|
+              = render partial: "items/item-list", locals: { item: item }
+          - else
+            商品がありません
+= render 'layouts/display-btn'
+= render 'layouts/footer'

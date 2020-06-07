@@ -29,7 +29,7 @@
             height: 36px;
             padding: 0 0 0 5px;
           }
-          button {
+          .search-box__btn {
             width: 36px;
             border: 0;
             cursor: pointer;
@@ -248,7 +248,9 @@
         background-color: #fff;
         &__img {
           img {
-            width: 100%;
+            object-fit: cover;
+            width: 220px;
+            height: 220px;
           }
         }
         &__box {

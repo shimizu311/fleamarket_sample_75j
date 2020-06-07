@@ -1,0 +1,12 @@
+.item-list
+  - if item.buyer_id.present?
+    .sold-sign
+      SOLD
+  .item-list__image
+    = link_to item_path(item.id) do
+      = image_tag item.images.first.image_url.url
+  .item-list__info
+    .item-list__info__name
+      = item.name
+    .item-list__info__price
+      = "￥#{item.price}"
