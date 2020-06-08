@@ -117,7 +117,7 @@
       -#   .main-box__text
       -#     %p testtesttesttesttest
     .message-box__form
-      = form_for @comment, url:item_comments_path do |f|
+      = form_for @comment do |f|
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         = f.text_area :text, class: "text_area__comment"
         = f.submit "コメントする", class: "text_area__submit"
