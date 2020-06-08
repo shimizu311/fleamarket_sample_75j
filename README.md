@@ -13,8 +13,6 @@
 |month|integer|null: false|
 |day|integer|null: false|
 ### Association
-- has_many :comments, dependent: :destroy
-- has_many :likes, dependent: :destroy
 - has_many :sell_items, class_name: 'Item', foreign_key: 'seller_id'
 - has_many :buy_items, class_name: 'Item', foreign_key: 'buyer_id'
 - has_one :user_address, dependent: :destroy
@@ -42,17 +40,51 @@
 |tel|string||
 ### Association
 - belongs_to :user, optional: true
-- belongs_to_active_hash :area
+- belongs_to :area
 
 
-## areasテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|area_name|string|null: false|
+|name|string|null: false|
+|text|text|null: false|
+|category_id|references|foreign_key: true|
+|brand|string||
+|damage_id|integer|null:false|
+|fee|integer|null:false|
+|area_id|references|foreign_key: true|
+|send_date|integer|null:false|
+|price|integer|null: false|
+|buyer_id|references|foreign_key: true|
+|seller_id|references|foreign_key: true|
 ### Association
-- has_many :user_addresses
+- has_many :images, dependent: :destroy
+- belongs_to :area
+- belongs_to :category
+- belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+- belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|foreign_key: true, null :false|
+|image_url|string|null :false|
+### Association
+- belongs_to :item
+
+
+## categoryテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string||
+### Association
 - has_many :items
 
+
+
+<!-- ##未実装
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -72,57 +104,4 @@
 |product_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :item
-
-
-## itemsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|text|text|null: false|
-|category_id|references|foreign_key: true|
-|brand|string||
-|damage_id|integer|null:false|
-|fee|integer|null:false|
-|area_id|references|foreign_key: true|
-|send_date|integer|null:false|
-|price|integer|null: false|
-|buyer_id|references|foreign_key: true|
-|seller_id|references|foreign_key: true|
-### Association
-- has_many :users, though: [:comments, :likes]
-- has_many :comments, dependent: :destroy
-- has_many :likes
-- has_many :images, dependent: :destroy
-- belongs_to :area
-- belongs_to :category
-- belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
-- belongs_to :buyer, class_name: 'User', foreign_key: 'buyer_id'
-
-
-## imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|references|foreign_key: true, null :false|
-|image_url|string|null :false|
-### Association
-- belongs_to :item
-
-
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-### Association
-- has_many :items
-- has_many :categories
-
-
-## categoryテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|ancestry|string|null :false|
-### Association
-- has_many :items
-- has_many :brands
+- belongs_to :item -->
