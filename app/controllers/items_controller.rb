@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_category, only: :edit
+  before_action :set_category, only: [:edit, :update]
   
   def index
     @items =Item.limit(3).where(buyer_id: nil).order(created_at: :desc)
@@ -95,12 +95,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def set_category_parent_array
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-  end
+  
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
@@ -121,6 +116,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category_parent_array
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def set_category
