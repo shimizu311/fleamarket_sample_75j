@@ -69,10 +69,10 @@ class ItemsController < ApplicationController
     if @item.buyer_id.present?
       redirect_to item_path(@item.id), alert: '売り切れています'
     else
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
       @item.with_lock do
         if current_user.card.present?
           @card = Card.find_by(user_id: current_user.id)
-          Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
           charge = Payjp::Charge.create(
             amount: @item.price,
             customer: Payjp::Customer.retrieve(@card.customer_id),
@@ -94,8 +94,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-  
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
